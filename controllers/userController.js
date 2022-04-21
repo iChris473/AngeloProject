@@ -25,7 +25,7 @@ exports.createUser = async (req, res) => {
             token: crypto.randomBytes(32).toString("hex")
         }).save()
 
-        const url = `http://localhost:8800/api/validate?token=${token.token}&id=${newUser._id}`
+        const url = `https://nairacity.herokuapp.com/api/validate?token=${token.token}&id=${newUser._id}`
 
         const message = `
         <h1>Complete the process of becoming a citizen of NairaCity</h1>
@@ -96,7 +96,7 @@ exports.loginUser = async  (req, res) => {
               token: crypto.randomBytes(32).toString("hex"),
             }).save();
 
-            const url = `http://localhost:8800/api/validate?token=${token.token}&id=${user._id}`;
+            const url = `https://nairacity.herokuapp.com/api/validate?token=${token.token}&id=${user._id}`;
 
             const message = `
             <h1>Complete the process of becoming a citizen of NairaCity</h1>
