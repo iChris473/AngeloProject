@@ -1,0 +1,54 @@
+<%- include('partials/header.ejs') %>
+
+    <body class="relative" style="background-color: #252525;">
+        <!-- Nav Section -->
+        <%- include('partials/dashnav.ejs') %>
+
+            <div class=" overflow-x-hidden grid grid-cols-4">
+                <!-- SideBar -->
+                <%- include('partials/dashside.ejs') %>
+
+                    <!-- Main Section -->
+                    <section class="col-span-4 md:col-span-3 mt-16">
+                        <div class="mt-10 m-5 min-h-screen">
+                            <h1 class="ultra text-4xl text-green-500 text-center mt-12">Withdraw Fundz</h1>
+                            <p class="text-green-200 text-center mt-2 italic max-w-[800px] mx-auto"><b>NOTICE:</b> You can not withdraw from your mining balance until after two weeks of registration, and you should get your funds at least 6 hours after you place withdrawal</p>
+                            <div class="mb-5">
+                                <div class="flex items-center justify-center flex-col my-10 gap-5">
+                                    <div class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 w-full max-w-[800px] mx-auto">
+                                        <div class="flex items-center justify-between gap-10">
+                                            <div class="space-y-2">
+                                                <p class="text-gray-200 font-bold text-xl">Referral Balance</p>
+                                                <p class="ultra text-2xl text-gray-400">NGN 3,000</p>
+                                            </div>
+                                            <div class="purpleGrad w-10 h-10 opacity-50"></div>
+                                        </div>
+                                        <p class="greenBtn shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-lg tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse">Place withdrawal</p>
+                                    </div>
+                                    <div class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 w-full max-w-[800px] mx-auto">
+                                        <div class="flex items-center justify-between gap-10">
+                                            <div class="space-y-2">
+                                                <p class="text-gray-200 font-bold text-xl">Mining Balance </p>
+                                                <p class="ultra text-2xl text-gray-400">NGN 2,500</p>
+                                            </div>
+                                            <div class="purpleGrad w-10 h-10 opacity-50"></div>
+                                        </div>
+                                        <p class="bg-gray-800 shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-lg tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse">You can only withdraw after 2 weeks of deposit</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Footer -->
+                        <footer class="flex items-center justify-between w-full bg-black bg-opacity-30 p-7">
+                            <p class="text-gray-200 text-sm">2022 &copy NairaCity</p>
+                            <p class="text-gray-200 text-sm">Designed & Developed by NairaCity Technologies Ltd</p>
+                        </footer>
+                    </section>
+            </div>
+
+            <!-- Javascript codes and links -->
+
+            <script src="/public/admin/admin.js"></script>
+    </body>
+
+    </html>

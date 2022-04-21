@@ -1,0 +1,28 @@
+
+Users Model
+- Name
+- Username
+- Email
+- coupon code
+- Status
+- Refferred
+
+
+
+HOW TO VERIFY ACCOUNT
+- generate random code from the database
+
+HOW REFERRING LOGIC WORKS
+- When A refers B 
+- B's username is stored in A's model.refferred
+- to get B's referall list
+    - map through all users
+    - filter users.refferred == B.username
+
+HOW TO VERIFY USERS EMAIL
+- create a token
+- save a user in the database
+- send an email with the token to the user email to validate
+- when user clicks the link, the token is deleted and validated is changed to true
+- if he ever wants to login and validates is not true
+- another email is sent and he has to verfiy again

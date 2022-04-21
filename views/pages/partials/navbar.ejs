@@ -1,0 +1,89 @@
+
+
+
+<section class="z-50 fixed w-full opacity-100 bg-[#141414]">
+    <!-- On Mobile -->
+    <div class="md:hidden w-full shadow-md border-b border-gray-800">
+        <nav class="p-5 flex relative items-center justify-between max-w-[1200px] mx-auto">
+            <a href="/">
+                <img src="/public/img/newLogo.png" class="h-10 absolute md:relative top-3" alt="">
+            </a>
+            <div class="altIcon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white cursor pointer" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <div class="z-50 xIcon hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400 cursor pointer" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+            </div>
+            <div class="menuDiv hidden flex flex-col  z-40 h-screen top-0 right-0 bg-[#1f1f1f] items-start justify-start pt-28 pr-28 pl-12 gap-5 absolute md:relative top-3">
+                <a href="/" class="text-gray-500 text-xl border-b border-gray-800 pb-2 w-full">Home</a>
+                <a href="http://localhost:8800/#about" class="text-gray-500 text-xl border-b border-gray-800 pb-2 w-full">About</a>
+                <a href="#howitworks" class="text-gray-500 text-xl border-b border-gray-800 pb-2 w-full">How it Works</a>
+                <a href="login" class="text-gray-500 text-xl border-b border-gray-800 pb-2 w-full loginBtn">Login</a>
+                <a href="register"><button class="dlbtn p-2 rounded-full px-7 regBtn">Register</button></a>
+                <a href="dashboard"><button class="dlbtn p-2 rounded-full px-7 dashBtn hidden">Dashboard</button></a>
+            </div>
+        </nav>
+    </div>
+    <!-- On Desktop -->
+    <div class="hidden md:block  w-full shadow-md border-b border-gray-800">
+        <nav class="p-5 flex items-center justify-between max-w-[1200px] mx-auto">
+            <div class="flex items-center justify-center gap-5">
+                <a href="/">
+                    <img src="/public/img/newLogo.png" class="h-10" alt="">
+                </a>
+                <a href="/" class="text-gray-500 text-xl">Home</a>
+                <a href="http://localhost:8800/#about" class="text-gray-500 text-xl">About</a>
+                <a href="#howitworks" class="text-gray-500 text-xl">How it works</a>
+                <a href="login" class="text-gray-500 text-xl loginBtn2">Login</a>
+            </div>
+            <div>
+                <a href="register"><button class="dlbtn p-4 rounded-full px-7 regBtn2">Register</button></a>
+                <a href="dashboard"><button class="dlbtn p-4 rounded-full px-7 hidden dashBtn2">Dashboard</button></a>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+
+        const xIcon = document.querySelector(".xIcon");
+        const altIcon = document.querySelector(".altIcon");
+        const menuDiv = document.querySelector(".menuDiv");
+        const regBtn = document.querySelector(".regBtn");
+        const regBtn2 = document.querySelector(".regBtn2");
+        const dashBtn = document.querySelector(".dashBtn");
+        const dashBtn2 = document.querySelector(".dashBtn2");
+        const loginBtn = document.querySelector(".loginBtn");
+        const loginBtn2 = document.querySelector(".loginBtn2");
+
+        xIcon.addEventListener("click", () => {
+            menuDiv.classList.add("hidden");
+            xIcon.classList.add("hidden");
+            altIcon.classList.remove("hidden");
+        });
+
+        altIcon.addEventListener("click", () => {
+            menuDiv.classList.remove("hidden");
+            xIcon.classList.remove("hidden");
+            altIcon.classList.add("hidden");
+        });
+
+        const user = localStorage.getItem("user");
+
+        if(user){
+            loginBtn.classList.add("hidden");
+            loginBtn2.classList.add("hidden");
+            regBtn.classList.add("hidden");
+            regBtn2.classList.add("hidden");
+            dashBtn.classList.remove("hidden");
+            dashBtn2.classList.remove("hidden");
+        }
+
+
+
+    </script>
+    
+</section>

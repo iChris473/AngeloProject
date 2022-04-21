@@ -1,0 +1,65 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.dlbtn {
+    /* background: rgb(0,15,36);
+    background: linear-gradient(90deg, rgba(0,15,36,1) 0%, rgba(50,9,121,1) 0%, rgba(0,134,255,1) 100%);
+    color: white */
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    color: white
+}
+
+.shadowBlue {
+    /* box-shadow: 10px 10px 10px 10px rgba(50,9,121,1), 3px 10px 10px 10px rgba(50,9,121,1); */
+    box-shadow: rgba(21, 122, 255, 0.2) 0px 8px 24px, rgba(21, 122, 255, 0.2) 0px 16px 56px, rgba(21, 122, 255, 0.2) 0px 24px 80px;;
+}
+
+.roundedGuy {
+    border-radius: 50%;
+    border: 1px solid linear-gradient(90deg, rgba(0,15,36,1) 0%, rgba(50,9,121,1) 0%, rgba(0,134,255,1) 100%);
+}
+
+.purples {
+    /* color: linear-gradient(90deg, rgba(0,15,36,1) 0%, rgba(50,9,121,1) 0%, rgba(0,134,255,1) 100%); */
+    color:  rgb(0, 223, 156)
+}
+.blue {
+    /* color: linear-gradient(90deg, rgba(0,15,36,1) 0%, rgba(50,9,121,1) 0%, rgba(0,134,255,1) 100%); */
+    color: rgb(1, 198, 212)
+}
+
+.pblue {
+    background: -webkit-linear-gradient(90deg, rgba(0,15,36,1) 0%, rgba(50,9,121,1) 0%, rgba(0,134,255,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+.pborder {
+    border: 1px solid rgba(50,9,121,1)
+}
+.greenLine {
+    background: rgb(0,15,36);
+    background: linear-gradient(90deg, rgb(1, 82, 33) 0%, rgb(4, 44, 21) 20%, rgb(0, 116, 39) 80%);
+}
+.greenBtn {
+    background: rgb(0,15,36);
+    background:linear-gradient(90deg, rgb(1, 82, 33) 0%, rgb(4, 44, 21) 20%, rgb(0, 116, 39) 80%);
+    color: white
+}
+.lightDark {
+    background-color: rgb(41, 41, 41);
+}
+.greenDot{
+    border-radius: 50%;
+    background-color: rgb(1, 158, 54);
+    padding: 2px;
+    width: 13px;
+    height: 13px;
+}
+.purpleGrad{
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    border-radius: 50%;
+}

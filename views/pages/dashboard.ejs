@@ -1,0 +1,191 @@
+<%- include('partials/header.ejs') %>
+
+    <body class="relative" style="background-color: #252525;">
+        <!-- Nav Section -->
+        <%- include('partials/dashnav.ejs') %>
+
+            <div class=" overflow-x-hidden grid grid-cols-4">
+                <!-- SideBar -->
+                <%- include('partials/dashside.ejs') %>
+
+                    <!-- Main Section -->
+                    <section class="col-span-4 md:col-span-3 mt-16">
+                        <div class="mt-10 m-5">
+                            <h1 class="ultra text-4xl text-center mt-12">My Dashboard</h1>
+                            <div class="mb-5">
+                                <div
+                                    class="border border-gray-800 rounded-md lightDark p-3 my-10 shadow-md shadow-gray-700 flex flex-col items-center justify-center gap-1 max-w-[900px] mx-auto">
+                                    <h1 class="ultra text-xl md:text-4xl mt-4 text-green-500 tracking-wider">
+                                        Welcome Ebenezer
+                                    </h1>
+                                    <p class="text-green-100">Enjoy a lot of benefits as a citizen of NairaCity</p>
+                                    <div class="greenLine h-[2px] my-5 w-full"></div>
+                                    <!-- <p class="text-3xl mb-10 ultra">NGN 6,000</p> -->
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Total Mine: <b>12</b></p>
+                                    </div>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Mining Balance: <b>6,400 Naira</b></p>
+                                    </div>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Mining Balance: <b>6,400 Naira</b></p>
+                                    </div>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Referall Balance: <b>3,000 Naira</b></p>
+                                    </div>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Total Referalls: <b>3</b></p>
+                                    </div>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Status: <b class="text-pink-600 p-2">Unverified</b></p>
+                                    </div>
+                                    <div class="w-full p-5 flex gap-5 items-start justify-start">
+                                        <div class="greenDot mt-3"></div>
+                                        <form class="flex flex-col w-full items-start">
+                                            <p class="flex-1 font-semibold text-lg">Verify Account (Enter Coupon Code): </p> 
+                                            <input type="text" name="accountNumber" placeholder="Enter an active account Number" class="outline-none rounded-md w-[95%] max-w-[800px] p-2 border-b border-green-700 bg-transparent" >
+                                            <button class="greenBtn shadow-md shadow-green-700 py-2 rounded-md px-10 font-bold text-md tracking-wide my-2 block ">Verify</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div
+                                    class="border border-gray-800 rounded-md bg-black p-3 my-10 shadow-md shadow-gray-700 flex flex-col items-center justify-center gap-1 max-w-[900px] mx-auto">
+                                    <h1 class="ultra text-xl md:text-4xl mt-4 text-green-500 tracking-wider">
+                                        NairaCity Mining Engine
+                                    </h1>
+                                    <p class="text-green-100 text-center">Our AI bot trades your money on the background
+                                        <br> and returns
+                                        profit
+                                        every 24 Hours</p>
+                                    <img src="/public/img/minemine.gif" class="w-[300px] object-contain" alt="">
+                                    <p class="text-sm text-center font-bold">Mining...</p>
+                                    <div>
+                                        <p class="text-green-500 font-bold text-center text-lg mt-5">Total amount mined:
+                                        </p>
+                                        <p class="bg-gray-400 py-3 px-20 rounded-md text-black ultra text-2xl">NGN3,500
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex items-center justify-center flex-wrap my-10 gap-5 max-w-[900px] mx-auto">
+                                    <div
+                                        class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 flex items-center justify-between gap-10 w-full max-w-[400px] mx-auto">
+                                        <div class="space-y-2">
+                                            <p class="text-gray-200 font-bold text-xl">Mining Balance</p>
+                                            <p class="ultra text-2xl text-gray-400">NGN 3,500</p>
+                                        </div>
+                                        <div class="purpleGrad w-10 h-10 opacity-50"></div>
+                                    </div>
+                                    <div
+                                        class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 flex items-center justify-between gap-10 w-full max-w-[400px] mx-auto">
+                                        <div class="space-y-2">
+                                            <p class="text-gray-200 font-bold text-xl">Referral Balance</p>
+                                            <p class="ultra text-2xl text-gray-400">NGN 800</p>
+                                        </div>
+                                        <div class="purpleGrad w-10 h-10 opacity-50"></div>
+                                    </div>
+                                    <div
+                                        class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 flex items-center justify-between gap-10 w-full max-w-[400px] mx-auto">
+                                        <div class="space-y-2">
+                                            <p class="text-gray-200 font-bold text-xl">Total Referral</p>
+                                            <p class="ultra text-2xl text-gray-400">3</p>
+                                        </div>
+                                        <div class="purpleGrad w-10 h-10 opacity-50"></div>
+                                    </div>
+                                    <div
+                                        class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 flex items-center justify-between gap-10 w-full max-w-[400px] mx-auto">
+                                        <div class="space-y-2">
+                                            <p class="text-gray-200 font-bold text-xl">Total Amount Withdrawn</p>
+                                            <p class="ultra text-2xl text-gray-400">NGN 3,000</p>
+                                        </div>
+                                        <div class="purpleGrad w-10 h-10 opacity-50"></div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 flex flex-col items-center justify-between gap-10 w-full max-w-[700px] mx-auto">
+                                    <p class="text-gray-200 font-bold text-xl">Referral Link</p>
+                                    <p
+                                        class="text-sm text-gray-400 rounded-md border border-green-600 p-2 w-full text-center">
+                                        http://nairacitycom.ng/register?ref=iChris</p>
+                                    <p class="py-2 px-4 rounded-md bg-pink-600 font-bold cursor-pointer">Copy Referall
+                                        Link</p>
+                                </div>
+                            </div>
+                            <div>
+                                <!-- Table -->
+                                <div class="w-[97%] p-4 rounded-md md:max-w-[1200px] mx-auto shadow-md m-2 space-y-5">
+                                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
+                                        <table class="w-full text-sm text-left">
+                                            <thead class="text-xs text-gray-300 uppercase bg-gray-900">
+                                                <tr>
+                                                    <th scope="col" class="px-6 py-3">
+                                                        User's Name
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3">
+                                                        Date
+                                                    </th>
+                                                    <th scope="col" class="px-6 py-3">
+                                                        Status
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="tableBody">
+                                                <tr
+                                                    class="border-b hover:bg-opacity-70 bg-opacity-40 bg-gray-800 border-gray-700">
+                                                    <th scope="row"
+                                                        class="px-6 py-4 font-medium text-gray-900 text-white whitespace-nowrap">
+                                                        Mark Rodrugez
+                                                    </th>
+                                                    <td class="px-6 py-4">
+                                                        test@gmail.com
+                                                    </td>
+                                                    <td class="px-6 py-4">
+                                                        <p
+                                                            class="bg-green-600 cursor-pointer text-center py-2 px-4 text-sm max-w-[100px] rounded-md text-white hover:underline">
+                                                            Verified
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    class="border-b hover:bg-opacity-70 bg-opacity-40 bg-gray-800 border-gray-700">
+                                                    <th scope="row"
+                                                        class="px-6 py-4 font-medium text-gray-900 text-white whitespace-nowrap">
+                                                        Mark Rodrugez
+                                                    </th>
+                                                    <td class="px-6 py-4">
+                                                        test@gmail.com
+                                                    </td>
+                                                    <td class="px-6 py-4">
+                                                        <p
+                                                            class="bg-red-600 cursor-pointer text-center py-2 px-4 text-sm max-w-[100px] rounded-md text-white hover:underline">
+                                                            Unverified
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Footer -->
+                        <footer class="flex items-center justify-between w-full bg-black bg-opacity-30 p-7">
+                            <p class="text-gray-200 text-sm">2022 &copy NairaCity</p>
+                            <p class="text-gray-200 text-sm">Designed & Developed by NairaCity Technologies Ltd</p>
+                        </footer>
+                    </section>
+            </div>
+
+            <!-- Javascript codes and links -->
+
+            <script src="/public/admin/admin.js"></script>
+    </body>
+
+    </html>

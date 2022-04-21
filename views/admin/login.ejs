@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelRecruit - Admin</title>
+    <script src="/public/js/tailwind.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+    <style>
+        .alumni {
+            font-family: 'Permanent Marker', cursive;
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Nav Section -->
+    <nav class="bg-gray-100 border-b shadow border-gray-50 p-5 fixed w-full z-50 flex items-center justify-between md:block">
+      <h1 class="text-green-500 alumni text-2xl md:text-3xl">TravelRecruit - Admin</h1>
+  </nav>
+        <!-- Main Section -->
+        <section class="flex flex-col items-center justify-center gap-5 pt-20 w-[95%] max-w-[700px] mx-auto">
+            <h1 class="text-gray-700 text-3xl text-center my-10">Log In</h1>
+            <div class="p-4 border rounded-md border-gray-200 shadow-md w-full">
+                <form class="space-y-5 py-5 form w-full bg-white">
+                    <div class="space-y-2">
+                      <p class="text-md font-bold text-gray-500 tracking-wider">
+                        Email
+                      </p>
+                      <input
+                        required
+                        type="email"
+                        class="border-b outline-none w-full placeholder:opacity-70 placeholder:text-md border-gray-400 email"
+                      />
+                    </div>
+                    <div class="space-y-2">
+                      <p class="text-md font-bold text-gray-500 tracking-wider">
+                       Password
+                      </p>
+                      <input
+                        required
+                        type="password"
+                        class="border-b outline-none w-full placeholder:opacity-70 placeholder:text-md border-gray-400 password"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      class="text-white font-bold tracking-wider p-2 bg-green-600 rounded-md block w-full mx-auto max-w-[500px] login mb-5 !mt-10"
+                    >
+                      update
+                    </button>
+                  </form>
+            </div>
+        </section>
+
+<script src="/public/admin/login.js"></script>
+</body>
+</html>
