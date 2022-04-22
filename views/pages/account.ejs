@@ -13,24 +13,26 @@
                 <div class="mt-10 m-5 min-h-screen">
                     <h1 class="ultra text-4xl text-center mt-12 text-green-500">My Wallet</h1>
                     <div>
-                        <form class="border border-gray-800 rounded-md lightDark px-5 py-10 my-10 shadow-md shadow-gray-700 flex flex-col items-center justify-center gap-5 max-w-[900px] mx-auto">
+                        <form class="form border border-gray-800 rounded-md lightDark px-5 py-10 my-10 shadow-md shadow-gray-700 flex flex-col items-center justify-center gap-5 max-w-[900px] mx-auto">
+                            <h1 class="text-center text-lg hidden font-bold text-red-500 apiError"></h1>
+                            <h1 class="text-center text-lg hidden font-bold text-green-500 success"></h1>
                             <div class="w-full flex items-start justify-center flex-col gap-3">
                                 <p class="font-bold text-lg">Bank Account Number</p>
-                                <input type="text" name="accountNumber" placeholder="Enter an active account Number" class="outline-none rounded-md w-[95%] max-w-[800px] p-2 border border-green-700 bg-transparent" >
+                                <input type="text" name="accountNumber" placeholder="Enter an active account Number" class="outline-none rounded-md w-[95%] max-w-[800px] p-2 border border-green-700 bg-transparent accNumber" >
                             </div>
                             <div class="w-full flex items-start justify-center flex-col gap-3">
                                 <p class="font-bold text-lg">Bank Account Name</p>
-                                <input type="text" name="accountNumber" placeholder="Enter your account name" class="outline-none rounded-md w-[95%] max-w-[800px] p-2 border border-green-700 bg-transparent" >
+                                <input type="text" name="accountNumber" placeholder="Enter your account name" class="outline-none rounded-md w-[95%] max-w-[800px] p-2 border border-green-700 bg-transparent accName" >
                             </div>
                             <div class="w-full flex items-start justify-center flex-col gap-3">
                                 <p class="font-bold text-lg">Bank Name</p>
-                                <input type="text" name="accountNumber" placeholder="Enter your bank's name" class="outline-none rounded-md w-[95%] max-w-[800px] p-2 border border-green-700 bg-transparent" >
+                                <input type="text" name="accountNumber" placeholder="Enter your bank's name" class="outline-none rounded-md w-[95%] max-w-[800px] p-2 border border-green-700 bg-transparent bankName" >
                             </div>
                             <div class="w-full flex items-start justify-center flex-col gap-3">
                                 <p class="font-bold text-lg">Bank Account Type</p>
-                                <input type="text" name="accountNumber" placeholder="Savings or Current?" class="outline-none rounded-md w-[95%] max-w-[800px] p-2 border border-green-700 bg-transparent" >
+                                <input type="text" name="accountNumber" placeholder="Savings or Current?" class="outline-none rounded-md w-[95%] max-w-[800px] p-2 border border-green-700 bg-transparent accType" >
                             </div>
-                            <button class="greenBtn shadow-md shadow-green-700 py-2 rounded-md px-20 font-bold text-lg tracking-wide my-5 block ">Update</button>
+                            <button type="submit" class="greenBtn shadow-md shadow-green-700 py-2 rounded-md px-20 font-bold text-lg tracking-wide my-5 block submit">Update</button>
                         </form>
                     </div>
                 </div>
@@ -44,6 +46,7 @@
 
         <!-- Javascript codes and links -->
 
-        <script src="/public/admin/admin.js"></script>
+        <script src="/public/js/dashboard.js"></script>
+        <script src="/public/js/bank.js"></script>
     </body>
     </html>

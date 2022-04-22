@@ -2,21 +2,20 @@
 
 const form = document.querySelector('.form');
 const submit = document.querySelector('.submit');
-const referr = document.querySelector('.referr');
-const confirmPassword = document.querySelector('.confirmPassword');
-const password = document.querySelector('.password');
 const number = document.querySelector('.number');
 const fullName = document.querySelector('.fullName');
 const email = document.querySelector('.email');
-const mismatch = document.querySelector('.mismatch');
 const apiError = document.querySelector('.apiError');
 const username = document.querySelector('.username');
+const success = document.querySelector('.success');
 
-referr.value = window.location.search.split("=")[1] || ""
+number.value = user.number || ""
+fullName.value = user.name || ""
+email.value = user.email || ""
+username.value = user.username || ""
 
 const timeOut = () => {
     setTimeout(() => {
-        mismatch.classList.add("hidden")
         apiError.classList.add("hidden")
     }, 6000)
 }
@@ -25,31 +24,24 @@ const submitForm = async e => {
 
     e.preventDefault();
 
-    if(confirmPassword.value != password.value){
-        mismatch.classList.remove("hidden")
-        window.location.href = "#error"
-        timeOut()
-        return
-    }
-    submit.innerHTML = "Creating Account..."
+    submit.innerHTML = "Updating..."
 
     const newUser = {
         name: fullName.value,
         email: email.value,
         number: number.value,
-        referr: referr.value,
-        password: password.value,
         username: username.value,
 
     }
 
     console.log(newUser)
 
-    fetch(`${url}/user/register`, {
-      method: "POST",
+    fetch(`${url}/user/update/${user._id}`, {
+      method: "PUT",
       body: JSON.stringify(newUser),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
+        token: `Bearer ${user?.token}`
       },
     })
       .then(function (response) {
@@ -60,7 +52,7 @@ const submitForm = async e => {
               apiError.innerHTML = text;
               apiError.classList.remove("hidden")
               window.location.href = "#error"
-              submit.innerHTML = "Register"
+              submit.innerHTML = "Update"
               timeOut();
               return Promise.reject()
             });
@@ -69,8 +61,17 @@ const submitForm = async e => {
       })
       .then(function (data) {
         console.log(data);
-        submit.innerHTML = "Register"
-        window.location.href = "/checkemail"
+
+
+        const  {name, email, number, username, ...others} = user
+        const updatedUser = {...others, ...newUser}
+
+        localStorage.setItem("user", JSON.stringify(updatedUser))
+        
+        submit.innerHTML = "Update"
+        success.innerHTML = "Account successfully updated";
+        success.classList.remove("hidden")
+
       })
       .catch(function (error) {
         console.log(error)

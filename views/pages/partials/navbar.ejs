@@ -73,7 +73,7 @@
 
         const user = localStorage.getItem("user");
 
-        if(user){
+        if(user && (user != "null")){
             loginBtn.classList.add("hidden");
             loginBtn2.classList.add("hidden");
             regBtn.classList.add("hidden");

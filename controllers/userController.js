@@ -129,12 +129,28 @@ exports.loginUser = async  (req, res) => {
 }
 
 exports.updateUser = async(req, res) => {
+  
     try {
-        if(req.body.password){
-            const salt = await bcrypt.genSalt(10)
-            const hashedPassword = await bcrypt.hash(req.body.password, salt)
-            req.body.password = hashedPassword
+        const oldUser = await User.findById(req.user.id)
+
+        // check email
+        if(req.body.email){
+            const registered = await User.findOne({email: req.body.email})
+            if(registered) return res.status(401).json("An Account is registered with this email")
         }
+        if (req.body.password) {
+          const { p } = req.query;
+          // checks password
+          const validPassword = await bcrypt.compare(p, oldUser.password);
+
+          if (!validPassword) return res.status(401).json("InCorrect Password");
+
+          const salt = await bcrypt.genSalt(10);
+          const hashedPassword = await bcrypt.hash(req.body.password, salt);
+          req.body.password = hashedPassword;
+
+        }
+        
         const user = await User.findOneAndUpdate(
             {
                 _id: req.user.id
@@ -326,6 +342,10 @@ exports.getMinedAccount = async (req, res) => {
         const user = await User.findById(req.params.id)
 
         let totalMined;
+        
+        let totalAmount = Math.abs(
+            Math.floor( ( new Date().getTime() - user.verifiedDate.getTime() )  / (1000 * 3600 * 24) )
+        )
 
         if(user.package.toLowerCase() == "special"){
 
@@ -333,7 +353,10 @@ exports.getMinedAccount = async (req, res) => {
                 Math.floor( ( new Date().getTime() - user.verifiedDate.getTime() )  / (1000 * 3600 * 24) )
             ) * 600
 
-            return res.status(200).json(totalMined)
+            return res.status(200).json({
+                balance: totalMined,
+                total: totalAmount
+            })
         }
 
         if(user.package.toLowerCase() == "premium"){
@@ -341,14 +364,20 @@ exports.getMinedAccount = async (req, res) => {
                 Math.floor( ( new Date().getTime() - user.verifiedDate.getTime() )  / (1000 * 3600 * 24) )
             ) * 1000
 
-            return res.status(200).json(totalMined)
+            return res.status(200).json({
+                balance: totalMined,
+                total: totalAmount
+            })
         }
 
         totalMined = Math.abs(
             Math.floor( ( new Date().getTime() - user.verifiedDate.getTime() )  / (1000 * 3600 * 24) )
         ) * 300
 
-        return res.status(200).json(totalMined)
+        return res.status(200).json({
+            balance: totalMined,
+            total: totalAmount
+        })
 
     } catch (error) {
         return res.status(400).json('An error occured')

@@ -1,5 +1,11 @@
 
 <nav class="bg-[#1b1b1b] border-b shadow border-green-900 p-5 fixed w-full z-50 flex items-center justify-between md:block">
+    <script>
+        const user = JSON.parse(localStorage.getItem('user'));
+        if(!user){
+            window.location.href = '/register';
+        }
+    </script>
     <a href="/"> <img src="/public/img/newLogo.png" class="h-10 " alt=""></a>
     <div class="md:hidden menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -11,11 +17,5 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
     </div>
-
-    <script>
-        const validUser = localStorage.getItem('user');
-        if(!validUser){
-            window.location.href = '/register';
-        }
-    </script>
+ <script src="/public/js/baseUrl.js"></script>
 </nav>

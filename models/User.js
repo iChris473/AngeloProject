@@ -27,9 +27,9 @@ const UserSchema = new mongoose.Schema({
         type: String,
     },
     accountName: {type: String},
-    accountNumberaccountName: {type: String},
+    accountNumber: {type: String},
     bankName: {type: String},
-    bankType: {type: String},
+    accountType: {type: String},
     resetPasswordToken: String,
     validated: {
         type: Boolean,
