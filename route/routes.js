@@ -41,7 +41,7 @@ router.get("/coupon/get", userController.getCoupons)
 // ADMIN ROUTES
 
 // create admin
-// router.post("/admin/register", adminController.createUser)
+router.post("/admin/register", adminController.createUser)
 // login admin
 router.post("/admin/login", adminController.loginUser)
 // Update admin
