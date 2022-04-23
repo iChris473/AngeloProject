@@ -121,7 +121,7 @@ getReferralls()
 
 
 async function getTotalMined(){
-    fetch(`http://localhost:8800/api/user/mine/${user._id}`, {
+    fetch(`${url}/user/mine/${user._id}`, {
         method: "GET",
         headers: {
           "Content-type": "application/json; charset=UTF-8",

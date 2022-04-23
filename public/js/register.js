@@ -37,7 +37,7 @@ const submitForm = async e => {
         name: fullName.value,
         email: email.value,
         number: number.value,
-        referr: referr.value,
+        referr: window.location.search.split("=")[1] || referr.value || "",
         password: password.value,
         username: username.value,
 
