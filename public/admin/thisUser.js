@@ -17,9 +17,8 @@ document.querySelector(".amountWith").innerHTML = currentUser.amountWithdrawn ||
 
 const btn = document.querySelector(".approveBtn")
 
-const approveWithdraw = async (e) => {
- 
-    e.preventDefault()
+const approveWithdraw = async () => {
+
 
     const newUser = {
         withdraw: false
