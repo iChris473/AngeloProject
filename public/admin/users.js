@@ -39,8 +39,9 @@ async function getAllusers(){
       <td class="px-6 py-4">
       ${user.withdraw}
       </td>
-      <td class="px-6 py-4 text-right">
-          <a href="#" bg-blue-600 p-1 text-xs rounded-md text-white dark:text-blue-500 hover:underline">View</a>
+      <td class="px-6 py-4">
+       <p class=${user.verified ? "text-green-500" : "text-red-500"}></p>
+        ${user.verified}
       </td>
 
               `
