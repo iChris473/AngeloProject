@@ -209,7 +209,7 @@ exports.forgotPassword = async (req, res) => {
 
         await user.save();
 
-        const resetUrl = `http://localhost:3000/resetpassword?resettoken=${resetToken}`
+        const resetUrl = `https://nairacity.herokuapp.com/updatepass?resettoken=${resetToken}`
 
         const message = `
             <h1>You have requested for a password reset</h1>

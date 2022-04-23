@@ -1,0 +1,59 @@
+
+
+<%- include('partials/adminheader.ejs') %>
+
+
+<body class="relative">
+    <!-- Nav Section -->
+
+    <%- include('partials/adminnav.ejs') %>
+
+    <div class=" overflow-x-hidden grid grid-cols-4">
+
+        <!-- SideBar -->
+        <%- include('partials/adminside.ejs') %>
+
+        <!-- Main Section -->
+        <section class="col-span-4 md:col-span-3 mt-24">
+            <div>
+                <!-- Total Users -->
+                <div class="w-[97%] p-4 border rounded-md border-gray-200 md:max-w-[700px] mx-auto shadow-md m-2 space-y-5">
+                    <div class="flex flex-col items-center justify-between gap-7">
+                        <div
+                            class="border border-gray-800 rounded-md lightDarks p-7 shadow-md shadow-gray-700 flex flex-col items-center justify-between gap-10 w-full max-w-[700px] mx-auto">
+                            <p class="text-gray-800 font-bold text-xl"><span class="typePackage"></span> Coupon Code</p>
+                            <p class="text-sm text-gray-400 rounded-md border border-green-600 p-2 w-full text-center refLink refUsername"> </p>
+                            <p class="py-2 px-4 rounded-md bg-pink-600 font-bold text-white cursor-pointer copyBtn">Copy Coupon Code
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+  <script src="/public/admin/admin.js"></script>
+<script>
+    
+    const copyBtn = document.querySelector(".copyBtn")
+    const refLink = document.querySelector(".refLink")
+    const typePackage = document.querySelector(".typePackage")
+
+    refLink.innerHTML = JSON.parse(localStorage.getItem("icode")).code
+    typePackage.innerHTML = JSON.parse(localStorage.getItem("icode")).type
+
+    const copyToClipboard = () => {
+        if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(refLink.innerHTML)
+            copyBtn.innerHTML = "Copied to clipboard"
+            copyBtn.className = "py-2 px-4 rounded-md bg-green-600 font-bold cursor-pointer copyBtn"
+        }
+        // return navigator.clipboard.writeText(refLink.innerHTML);
+        return Promise.reject('The Clipboard API is not available.');
+    };
+
+    copyBtn.addEventListener("click", copyToClipboard)
+    
+</script>
+</body>
+</html>

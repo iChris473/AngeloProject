@@ -53,6 +53,15 @@ app.get("/checkemail", (req, res) => res.render("./pages/checkemail"))
 // Confirmed Email route for User Domain
 app.get("/confirmed", (req, res) => res.render("./pages/confirmed"))
 
+// Reset Password route for User Domain
+app.get("/reset", (req, res) => res.render("./pages/reset"))
+
+// Password Email route for User Domain
+app.get("/passemail", (req, res) => res.render("./pages/passemail"))
+
+// Update pass route for User Domain
+app.get("/updatepass", (req, res) => res.render("./pages/updatepass"))
+
 
 // ADMIN ROUTES
 
@@ -74,6 +83,8 @@ app.get("/admin/email", (req, res) => res.render("./admin/email"))
 app.get("/admin/login", (req, res) => res.render("./admin/login"))
 // This User Route
 app.get("/admin/thisuser", (req, res) => res.render("./admin/thisuser"))
+// Generate Coupon Route
+app.get("/admin/coupon", (req, res) => res.render("./admin/coupon"))
 
 
 const port = process.env.PORT || 8800

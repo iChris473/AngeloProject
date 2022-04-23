@@ -48,6 +48,10 @@ const UserSchema = new mongoose.Schema({
     },
     package:{
         type: String,
+    },
+    withdraw:{
+        type: Boolean,
+        default: false
     }
 
 }, {timestamps: true})

@@ -24,7 +24,7 @@ router.get("/user/all/:id", verifiedAdminToken, userController.getAllUsers)
 // Forgot Passowrd
 router.post("/user/forgotpass", userController.forgotPassword)
 // Reset Passowrd
-router.put("/user/resetpass", userController.resetPassword)
+router.put("/user/resetpassword", userController.resetPassword)
 // Verify Account
 router.put("/user/verify", userController.verifyAccount)
 // Get all Referrals

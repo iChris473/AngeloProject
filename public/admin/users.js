@@ -6,7 +6,7 @@ const tableBody = document.querySelector(".tableBody")
 let jobs = []
 
 async function getAllusers(){
-    fetch(`https://travel-recruit.herokuapp.com/api/user/all/${currentadmin.id}`, {
+    fetch(`${url}/user/all/${currentadmin.id}`, {
         method: "GET",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -34,13 +34,10 @@ async function getAllusers(){
           ${user.email}
       </td>
       <td class="px-6 py-4">
-      ${user.phone}
+      ${user.number || "N/A"}
       </td>
       <td class="px-6 py-4">
-      ${user.dob}
-      </td>
-      <td class="px-6 py-4">
-      ${user.nationality}
+      ${user.withdraw}
       </td>
       <td class="px-6 py-4 text-right">
           <a href="#" bg-blue-600 p-1 text-xs rounded-md text-white dark:text-blue-500 hover:underline">View</a>

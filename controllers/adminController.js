@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken")
 
 exports.createUser = async (req, res) => {
     const newUser = new User(req.body)
+    console.log("runnig")
     try {
         await newUser.save()
         res.status(201).json(newUser)

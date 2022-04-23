@@ -13,7 +13,7 @@ const loginUser= async e => {
         password: password.value
     }
 
-    fetch("https://travel-recruit.herokuapp.com/api/admin/login", {
+    fetch( `${url}/admin/login`, {
         method: "POST",
         body: JSON.stringify(newUser),
         headers: {
