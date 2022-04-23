@@ -92,16 +92,16 @@ async function getReferralls(){
                 
                 `
                     <th scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 text-white whitespace-nowrap">
-                        ${data.name}
+                        class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                        ${user.name}
                     </th>
                     <td class="px-6 py-4">
-                        ${data.email}
+                        ${user.email}
                     </td>
                     <td class="px-6 py-4">
                         <p
-                            class="${data.verified ? "bg-green-600" : "bg-red-600"} cursor-pointer text-center py-2 px-4 text-sm max-w-[100px] rounded-md text-white hover:underline">
-                            ${data.verified ? "Verified" : "Not Verified"}
+                            class="${user.verified ? "bg-green-600" : "bg-red-600"} cursor-pointer text-center p-2 text-sm max-w-[100px] rounded-md text-white hover:underline">
+                            ${user.verified ? "Verified" : "Not Verified"}
                         </p>
                     </td>
 

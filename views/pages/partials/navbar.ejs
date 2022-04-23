@@ -2,6 +2,13 @@
 
 
 <section class="z-50 fixed w-full opacity-100 bg-[#141414]">
+    <script>
+        const user = localStorage.getItem("user");
+
+        if (user && (window.location.href = '/register')) {
+            window.location.href = '/dashboard'
+        }
+    </script>
     <!-- On Mobile -->
     <div class="md:hidden w-full shadow-md border-b border-gray-800">
         <nav class="p-5 flex relative items-center justify-between max-w-[1200px] mx-auto">
@@ -71,7 +78,6 @@
             altIcon.classList.add("hidden");
         });
 
-        const user = localStorage.getItem("user");
 
         if(user && (user != "null")){
             loginBtn.classList.add("hidden");
