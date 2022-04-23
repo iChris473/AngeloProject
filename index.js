@@ -62,6 +62,9 @@ app.get("/passemail", (req, res) => res.render("./pages/passemail"))
 // Update pass route for User Domain
 app.get("/updatepass", (req, res) => res.render("./pages/updatepass"))
 
+// Terms and Service for User Domain
+app.get("/terms", (req, res) => res.render("./pages/terms"))
+
 
 // ADMIN ROUTES
 
