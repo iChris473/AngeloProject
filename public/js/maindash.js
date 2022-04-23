@@ -27,7 +27,7 @@ const buyCoup = document.querySelector(".buyCoup")
 const boldMineBal = document.querySelector(".boldMineBal")
 
 fullName.innerHTML = user.name
-refLink.innerHTML = "http://nairacitycom.ng/register?ref=" + user.username
+refLink.innerHTML = "https://nairacity.herokuapp.com/register?ref=" + user.username
 
 user.verified ? verified.innerHTML = "Verified" : verified.innerHTML = "Not Verified"
 user.verified ? verified.classList.add("text-green-500") : verified.classList.add("text-pink-500")
