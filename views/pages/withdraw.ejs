@@ -23,7 +23,7 @@
                                             </div>
                                             <div class="purpleGrad w-10 h-10 opacity-50"></div>
                                         </div>
-                                        <p class="withdrwBtn greenBtn shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-lg tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse hidden">Place withdrawal</p>
+                                        <p class="withdrwBtn greenBtn shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-lg tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse hidden"></p>
                                         <p class="referrBtn greenBtn shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-sm tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse hidden">Start Referring your friends and earn #1,000 on each Referral</p>
                                     </div>
                                     <div class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 w-full max-w-[800px] mx-auto">
@@ -61,6 +61,13 @@
                 document.querySelector('.refBalance').innerHTML = "NGN " + (refs.length * 1000).toLocaleString();                
                 document.querySelector('.mineBalance').innerHTML = "NGN " + mine.balance.toLocaleString();
 
+                if(user.withdraw){
+                    withdrwBtn.innerHTML = "PENDING..."
+                } else {
+                    withdrwBtn.innerHTML = "Place withdrawal"
+
+                }
+
                 if(refs.length == 0){
                     referrBtn.classList.remove("hidden")
                     withdrwBtn.classList.add("hidden")
@@ -69,6 +76,47 @@
                     withdrwBtn.classList.remove("hidden")
                 }
 
+                const placeWithdraw = async () => {
+                        e.preventDefault()
+
+                        const newUser = {
+                            withdraw: true
+                        }
+
+                        fetch(`${url}/user/update/${user._id}`, {
+                            method: "PUT",
+                            body: JSON.stringify(newUser),
+                            headers: {
+                                "Content-type": "application/json; charset=UTF-8",
+                                token: `Bearer ${user?.token}`
+                            },
+                        })
+                            .then(function (response) {
+                                if (response.ok) {
+                                    return response.json();
+                                } else {
+                                    return response.text().then((text) => {
+                                        return Promise.reject()
+                                    });
+                                }
+                                return Promise.reject(response);
+                            })
+                            .then(function (data) {
+
+                                console.log(data);
+                                const  { withdraw, ...others } = user
+                                const updatedUser = {...others, ...newUser}
+                                localStorage.setItem("user", JSON.stringify(updatedUser))
+
+                                window.location.reload()
+
+                            })
+                            .catch(function (error) {
+                                console.log(error)
+                            })
+                    }
+                    
+                 withdrwBtn.addEventListener("click", placeWithdraw)  
 
             </script>
         

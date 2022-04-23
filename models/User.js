@@ -31,6 +31,10 @@ const UserSchema = new mongoose.Schema({
     bankName: {type: String},
     accountType: {type: String},
     resetPasswordToken: String,
+    amountWithdrawn: {
+        type: Number,
+        default: 0
+    },
     validated: {
         type: Boolean,
         default: false
