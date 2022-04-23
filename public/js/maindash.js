@@ -25,8 +25,10 @@ const oops = document.querySelector(".oops")
 const mineGIf = document.querySelector(".mineGIf")
 const buyCoup = document.querySelector(".buyCoup")
 const boldMineBal = document.querySelector(".boldMineBal")
+const amountWithdrawn = document.querySelector(".amountWithdrawn")
 
 fullName.innerHTML = user.name
+amountWithdrawn.innerHTML = user.amountWithdrawn || "0"
 refLink.innerHTML = "https://nairacity.herokuapp.com/register?ref=" + user.username
 
 user.verified ? verified.innerHTML = "Verified" : verified.innerHTML = "Not Verified"
