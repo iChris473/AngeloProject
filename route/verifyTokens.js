@@ -17,7 +17,7 @@ const verifyToken = (req, res, next) => {
 
 const verifiedAccessToken = (req, res, next) => {
     verifyToken(req, res, () => {
-        if(req.user.id == req.params.id || req.user?.isAdmin == process.env.ISADMIN){
+        if(req.user.id == req.params.id || req.user?.isAdmin){
             next()
         } else {
             return res.status(401).json("unauthorized to update post")

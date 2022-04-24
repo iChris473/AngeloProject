@@ -131,7 +131,7 @@ exports.loginUser = async  (req, res) => {
 exports.updateUser = async(req, res) => {
   
     try {
-        const oldUser = await User.findById(req.user.id)
+        const oldUser = await User.findById(req.params.id)
 
         // check email
         if(req.body.email){
@@ -153,7 +153,7 @@ exports.updateUser = async(req, res) => {
         
         const user = await User.findOneAndUpdate(
             {
-                _id: req.user.id
+                _id: req.params.id
             }, {
                 $set: req.body
             },{new: true}

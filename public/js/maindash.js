@@ -1,5 +1,6 @@
 
 
+
 const fullName = document.querySelector(".fullName")
 const mineBalance = document.querySelector(".mineBalance")
 const mineTotal = document.querySelector(".mineTotal")
@@ -28,7 +29,9 @@ const boldMineBal = document.querySelector(".boldMineBal")
 const amountWithdrawn = document.querySelector(".amountWithdrawn")
 
 fullName.innerHTML = user.name
-amountWithdrawn.innerHTML = user.amountWithdrawn || "0"
+
+amountWithdrawn.innerHTML = user.amountWithdrawn
+
 refLink.innerHTML = "https://nairacity.herokuapp.com/register?ref=" + user.username
 
 user.verified ? verified.innerHTML = "Verified" : verified.innerHTML = "Not Verified"
@@ -79,8 +82,8 @@ async function getReferralls(){
             console.log(data);
 
             totalRef.innerHTML = data.length
-            refBalance.innerHTML = (data.length * 1000).toLocaleString()
-            xrefBalance.innerHTML = (data.length * 1000).toLocaleString()
+            refBalance.innerHTML = ( (data.length * 1000) - user.amountWithdrawn ).toLocaleString()
+            xrefBalance.innerHTML = ( (data.length * 1000) - user.amountWithdrawn ).toLocaleString()
             xtotalRef.innerHTML = data.length
             localStorage.setItem("ref", JSON.stringify(data))
 
@@ -141,6 +144,7 @@ async function getTotalMined(){
           
             mineBalance.innerHTML = data.balance.toLocaleString()
             boldMineBal.innerHTML = data.balance.toLocaleString()
+            xminingBalance.innerHTML = data.balance.toLocaleString()
             mineTotal.innerHTML = data.total.toLocaleString()
             localStorage.setItem("mine", JSON.stringify(data))
         })
@@ -161,7 +165,7 @@ async function veifyUserAccount(e){
     e.preventDefault();
 
     const userInfo = {
-        email: user.email,
+      email: user.email,
         coupon: verifyInput.value
     } 
 
@@ -190,6 +194,7 @@ async function veifyUserAccount(e){
               return Promise.reject(response);
         })
         .then(function (data) {
+
           console.log(data)
 
           const {verified, ...others} = user;

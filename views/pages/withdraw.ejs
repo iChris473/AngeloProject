@@ -58,7 +58,7 @@
                 const withdrwBtn = document.querySelector('.withdrwBtn');
                 const referrBtn = document.querySelector('.referrBtn');
 
-                document.querySelector('.refBalance').innerHTML = "NGN " + (refs.length * 1000).toLocaleString();                
+                document.querySelector('.refBalance').innerHTML = "NGN " + ( (refs.length * 1000) - user.amountWithdrawn ).toLocaleString();                
                 document.querySelector('.mineBalance').innerHTML = "NGN " + mine.balance.toLocaleString();
 
                 if(user.withdraw){

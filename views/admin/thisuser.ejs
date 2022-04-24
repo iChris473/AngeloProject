@@ -91,8 +91,11 @@
                             </div>
                         </div>
                         <!-- Buttons -->
-                        <div class="w-full flex items-end justify-end mb-10 pr-10">
-                          <button class="approveBtn bg-green-500 p-2 text-white text-lg font-bold rounded-md">Approve Withdrawal</button>
+                        <div class="hidden withDiv">
+                          <form class="withForm w-full flex items-end justify-end flex-col gap-5 mb-10 pr-10">
+                            <input type="number" class="w-full max-w-[300px] p-2 bg-transparent outline-none border-b border-gray-400 pb-2 amountGiven" placeholder="enter amount withdrawn">
+                            <button class="approveBtn bg-green-500 p-2 text-white text-lg font-bold rounded-md">Approve Withdrawal</button>
+                          </form>
                         </div>
                     </div> 
               </div>

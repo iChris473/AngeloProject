@@ -1,10 +1,42 @@
 
 <nav class="bg-[#1b1b1b] border-b shadow border-green-900 p-5 fixed w-full z-50 flex items-center justify-between md:block">
     <script>
-        const user = JSON.parse(localStorage.getItem('user'));
-        if(!user){
+        const oldUser = JSON.parse(localStorage.getItem('user'));
+        if(!oldUser){
             window.location.href = '/register';
         }
+
+        console.log(oldUser)
+        let updatedUser;
+
+        const getUpdatesOnUser = () => {
+
+        fetch(`https://nairacity.herokuapp.com/api/user/get/${oldUser._id}?id=${oldUser._id}`, {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then(function (response) {
+          if (response.ok) {
+            return response.json();
+          }
+          return Promise.reject(response);
+        })
+        .then(function (data) {
+          console.log(data);
+          
+          updatedUser = data
+            localStorage.setItem("user", JSON.stringify(data))
+        })
+        .catch(function (err) {
+          console.log(err)
+        })
+        }
+
+        getUpdatesOnUser()
+
+        const user = updatedUser || oldUser
 
     </script>
     <a href="/"> <img src="/public/img/newLogo.png" class="h-10 " alt=""></a>
