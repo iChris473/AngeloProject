@@ -3,7 +3,7 @@
     <script>
         const oldUser = JSON.parse(localStorage.getItem('user'));
         if(!oldUser){
-            window.location.href = '/register';
+            window.location.href.includes('/register');
         }
 
         console.log(oldUser)
