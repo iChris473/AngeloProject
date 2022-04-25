@@ -28,26 +28,51 @@ const buyCoup = document.querySelector(".buyCoup")
 const boldMineBal = document.querySelector(".boldMineBal")
 const amountWithdrawn = document.querySelector(".amountWithdrawn")
 
-fullName.innerHTML = user.name
 
-amountWithdrawn.innerHTML = user.amountWithdrawn
+const getUpdatesOnUser = () => {
 
-refLink.innerHTML = "https://nairacity.herokuapp.com/register?ref=" + user.username
+  fetch(`${url}/user/get/${user._id}?id=${user._id}`, {
+  method: "GET",
+  headers: {
+    "Content-type": "application/json; charset=UTF-8",
+  },
+})
+  .then(function (response) {
+    if (response.ok) {
+      return response.json();
+    }
+    return Promise.reject(response);
+  })
+  .then(function (data) {
+    console.log(data);
+    
+    fullName.innerHTML = data.name
 
-user.verified ? verified.innerHTML = "Verified" : verified.innerHTML = "Not Verified"
-user.verified ? verified.classList.add("text-green-500") : verified.classList.add("text-pink-500")
-user.verified && (veriyParent.classList.add("hidden"))
-user.verified && (hiddenRef.classList.add("hidden"))
-user.verified && (copyBtn.classList.remove("hidden"))
-user.verified && (refLink.classList.remove("hidden"))
-user.verified && (minemineParent.classList.remove("hidden"))
-user.verified && (mining.classList.remove("hidden"))
-user.verified && (oops.classList.add("hidden"))
-user.verified && (mineGIf.classList.remove("hidden"))
-user.verified && (buyCoup.classList.add("hidden"))
+    amountWithdrawn.innerHTML = data.amountWithdrawn
 
+    refLink.innerHTML = "https://nairacity.herokuapp.com/register?ref=" + data.username
 
+    data.verified ? verified.innerHTML = "Verified" : verified.innerHTML = "Not Verified"
+    data.verified ? verified.classList.add("text-green-500") : verified.classList.add("text-pink-500")
+    data.verified && (veriyParent.classList.add("hidden"))
+    data.verified && (hiddenRef.classList.add("hidden"))
+    data.verified && (copyBtn.classList.remove("hidden"))
+    data.verified && (refLink.classList.remove("hidden"))
+    data.verified && (minemineParent.classList.remove("hidden"))
+    data.verified && (mining.classList.remove("hidden"))
+    data.verified && (oops.classList.add("hidden"))
+    data.verified && (mineGIf.classList.remove("hidden"))
+    data.verified && (buyCoup.classList.add("hidden"))
 
+    localStorage.setItem("user", JSON.stringify(data))
+
+  })
+  .catch(function (err) {
+    console.log(err)
+  })
+  }
+
+  getUpdatesOnUser()
 
 
 const copyToClipboard = () => {
