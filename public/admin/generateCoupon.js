@@ -7,7 +7,6 @@ const premium = document.querySelector(".premium")
 
 const generateCoupon = async (type) => {
 
-  console.log(type)
 
     fetch(`${url}/coupon/create?type=${type}`, {
       method: "POST",
@@ -28,7 +27,7 @@ const generateCoupon = async (type) => {
       .then(function (data) {
         console.log(data);
         localStorage.setItem("icode", JSON.stringify(data))
-        window.location.href = "coupon"
+        window.location.href = "/coupon"
       })
       .catch(function (error) {
         console.log(error)

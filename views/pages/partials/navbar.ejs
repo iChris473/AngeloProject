@@ -3,7 +3,7 @@
 
 <section class="z-50 fixed w-full opacity-100 bg-[#141414]">
     <script>
-        const user = localStorage.getItem("user");
+        const user = JSON.parse(localStorage.getItem("user"));
 
         if (user && (window.location.href.includes('register'))) {
             window.location.href = '/dashboard'
