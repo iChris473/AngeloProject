@@ -51,9 +51,18 @@ const submitForm = async e => {
       })
       .then(function (data) {
         console.log(data);
-        window.localStorage.setItem("user", JSON.stringify(data))
-        submit.innerHTML = "Login"
-        window.location.href = "/dashboard"
+        if(data.validated){
+          window.localStorage.setItem("user", JSON.stringify(data))
+          submit.innerHTML = "Login"
+          window.location.href = "/dashboard"
+        } else{
+          apiError.innerHTML = data;
+          apiError.classList.remove("hidden")
+          window.location.href = "#error"
+          submit.innerHTML = "Login"
+          timeOut();
+        }
+        
       })
       .catch(function (error) {
         console.log(error)
