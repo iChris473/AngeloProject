@@ -40,8 +40,10 @@ async function getAllusers(){
       ${user.withdraw}
       </td>
       <td class="px-6 py-4">
-       <p class=${user.verified ? "text-green-500" : "text-red-500"}></p>
-        ${user.verified}
+       <p class=${user.verified ? "text-green-500" : "text-red-500"}>${user.verified}</p>
+      </td>
+      <td class="px-6 py-4">
+        ${user.package}
       </td>
 
               `
