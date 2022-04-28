@@ -9,7 +9,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
-// server your css as static
+// serve your css as static
 app.use('/public', express.static('public'));
 
 // set the view engine to ejs
