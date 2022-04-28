@@ -1,8 +1,11 @@
 
 
 node_modules/
-.gitignore
+# .gitignore
 .elasticbeanstalk/
+.ebextensions/
+.npmrc
+
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
