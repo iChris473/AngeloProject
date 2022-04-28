@@ -30,7 +30,7 @@ const generateCoupon = async (type) => {
       .then(function (data) {
         console.log(data);
         localStorage.setItem("icode", JSON.stringify(data))
-        window.location.href = "/coupon"
+        window.location.href = "/admin/coupon"
       })
       .catch(function (error) {
         console.log(error)
