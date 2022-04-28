@@ -56,6 +56,13 @@ const UserSchema = new mongoose.Schema({
     withdraw:{
         type: Boolean,
         default: false
+    },
+    lastMinedDate: {
+        type: Number
+    },
+    lastMinedAmout: {
+        type: Number,
+        default: 0
     }
 
 }, {timestamps: true})

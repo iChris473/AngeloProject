@@ -26,3 +26,17 @@ HOW TO VERIFY USERS EMAIL
 - when user clicks the link, the token is deleted and validated is changed to true
 - if he ever wants to login and validates is not true
 - another email is sent and he has to verfiy again
+
+MINING ALGORTITHM
+- add lastMinedAmount to user Model
+- add lastMinedDate to user model
+- if date.now() - lastMinedDatem >= 1
+    - lastMinedAmount == lastMinedAmount + 300
+
+--- On the front end
+
+ -if lastMinedDate < 1
+    -Amount Mined == lastMinedAmount - 300
+ -Total Mined
+ -- if user.package == starter
+    -- Total Mined === lastMinedAmount / 300

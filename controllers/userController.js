@@ -341,43 +341,125 @@ exports.getMinedAccount = async (req, res) => {
         
         const user = await User.findById(req.params.id)
 
-        let totalMined;
+        if( ( (new Date().getTime() - user.lastMinedDate) / (1000 * 60 * 60 * 24) ) < 1 ){ 
+            return res.status(400).json("You can only mine once an hour")
+        }
+
+        // let totalMined;
         
-        let totalAmount = Math.abs(
-            Math.floor( ( new Date().getTime() - user.verifiedDate.getTime() )  / (1000 * 3600 * 24) )
-        )
+        // let totalAmount = Math.abs(
+        //     Math.floor( ( new Date().getTime() - user.verifiedDate.getTime() )  / (1000 * 3600 * 24) )
+        // )
+
+        // #5K PACKAGE
 
         if(user.package.toLowerCase() == "special"){
 
-            totalMined = Math.abs(
-                Math.floor( ( new Date().getTime() - user.verifiedDate.getTime() )  / (1000 * 3600 * 24) )
-            ) * 600
+            // totalMined = Math.abs(
+            //     Math.floor( ( new Date().getTime() - user.verifiedDate.getTime() )  / (1000 * 3600 * 24) )
+            // ) * 600
 
-            return res.status(200).json({
-                balance: totalMined,
-                total: totalAmount
-            })
+            await User.updateOne(
+                {_id:user._id},
+                {
+                    $set: {
+                        lastMinedAmout: ( user.lastMinedAmout + 500 ),
+                        lastMinedDate: new Date().getTime()
+                    }
+                }
+            )    
+
+            return res.status(200).json("Mining engine initiated")
         }
+
+        // #10K PACKAGE
 
         if(user.package.toLowerCase() == "premium"){
-            totalMined = Math.abs(
-                Math.floor( ( new Date().getTime() - user.verifiedDate.getTime() )  / (1000 * 3600 * 24) )
-            ) * 1000
 
-            return res.status(200).json({
-                balance: totalMined,
-                total: totalAmount
-            })
+            await User.updateOne(
+                {_id:user._id},
+                {
+                    $set: {
+                        lastMinedAmout: ( user.lastMinedAmout + 1000 ),
+                        lastMinedDate: new Date().getTime()
+                    } 
+                }
+            )    
+
+            return res.status(200).json("Mining engine initiated")
+
         }
 
-        totalMined = Math.abs(
-            Math.floor( ( new Date().getTime() - user.verifiedDate.getTime() )  / (1000 * 3600 * 24) )
-        ) * 300
 
-        return res.status(200).json({
-            balance: totalMined,
-            total: totalAmount
-        })
+        // #20K PACKAGE
+
+        if(user.package.toLowerCase() == "pro"){
+
+            await User.updateOne(
+                {_id:user._id},
+                {
+                    $set: {
+                        lastMinedAmout: ( user.lastMinedAmout + 2000 ),
+                        lastMinedDate: new Date().getTime()
+                    } 
+                }
+            )    
+
+            return res.status(200).json("Mining engine initiated")
+
+        }
+
+
+        // #50K PACKAGE
+
+        if(user.package.toLowerCase() == "lite"){
+
+            await User.updateOne(
+                {_id:user._id},
+                {
+                    $set: {
+                        lastMinedAmout: ( user.lastMinedAmout + 5000 ),
+                        lastMinedDate: new Date().getTime()
+                    } 
+                }
+            )    
+
+            return res.status(200).json("Mining engine initiated")
+
+        }
+
+
+        // #100K PACKAGE
+
+        if(user.package.toLowerCase() == "xlite"){
+
+            await User.updateOne(
+                {_id:user._id},
+                {
+                    $set: {
+                        lastMinedAmout: ( user.lastMinedAmout + 10000 ),
+                        lastMinedDate: new Date().getTime()
+                    } 
+                }
+            )    
+
+            return res.status(200).json("Mining engine initiated")
+
+        }
+
+
+        // #2K PACKAGE
+        await User.updateOne(
+            {_id:user._id},
+            {
+                $set: {
+                    lastMinedAmout: ( user.lastMinedAmout + 200 ),
+                    lastMinedDate: new Date().getTime()
+                } 
+            }
+        )    
+
+        return res.status(200).json("Mining engine initiated")
 
     } catch (error) {
         return res.status(400).json('An error occured')

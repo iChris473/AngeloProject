@@ -30,7 +30,7 @@ router.put("/user/verify", userController.verifyAccount)
 // Get all Referrals
 router.get("/user/referrals", userController.getReferredUsers)
 // Get Mined Total
-router.get("/user/mine/:id", userController.getMinedAccount)
+router.put("/user/mine/:id", userController.getMinedAccount)
 // Generate Coupon
 router.post("/coupon/create", userController.generateCoupon)
 // Get Coupons

@@ -27,6 +27,17 @@ const mineGIf = document.querySelector(".mineGIf")
 const buyCoup = document.querySelector(".buyCoup")
 const boldMineBal = document.querySelector(".boldMineBal")
 const amountWithdrawn = document.querySelector(".amountWithdrawn")
+const power = document.querySelector(".power")
+const mine24 = document.querySelector(".mine24")
+
+ user.verified ? verified.innerHTML = "Verified" : verified.innerHTML = "Not Verified"
+ user.verified ? verified.classList.add("text-green-500") : verified.classList.add("text-pink-500")
+ user.verified && (veriyParent.classList.add("hidden"))
+ user.verified && (hiddenRef.classList.add("hidden"))
+ user.verified && (copyBtn.classList.remove("hidden"))
+ user.verified && (refLink.classList.remove("hidden"))
+ user.verified && (buyCoup.classList.add("hidden"))
+ user.verified && (oops.classList.add("hidden"))
 
 
 const getUpdatesOnUser = () => {
@@ -52,17 +63,120 @@ const getUpdatesOnUser = () => {
 
     refLink.innerHTML = "https://nairacity.herokuapp.com/register?ref=" + data.username
 
-    data.verified ? verified.innerHTML = "Verified" : verified.innerHTML = "Not Verified"
-    data.verified ? verified.classList.add("text-green-500") : verified.classList.add("text-pink-500")
-    data.verified && (veriyParent.classList.add("hidden"))
-    data.verified && (hiddenRef.classList.add("hidden"))
-    data.verified && (copyBtn.classList.remove("hidden"))
-    data.verified && (refLink.classList.remove("hidden"))
-    data.verified && (minemineParent.classList.remove("hidden"))
-    data.verified && (mining.classList.remove("hidden"))
-    data.verified && (oops.classList.add("hidden"))
-    data.verified && (mineGIf.classList.remove("hidden"))
-    data.verified && (buyCoup.classList.add("hidden"))
+    if( ( ((new Date().getTime() - data.lastMinedDate) / (1000 * 60 * 60 * 24))  < 1 ) && data.verified ){
+
+      power.classList.add("hidden")
+      minemineParent.classList.remove("hidden")
+      mining.classList.remove("hidden")
+      mineGIf.classList.remove("hidden")
+
+    } else {
+
+      data.verified && power.classList.remove("hidden")
+      data.verified && mine24.classList.remove("hidden")
+      minemineParent.classList.add("hidden")
+      mining.classList.add("hidden")
+      mineGIf.classList.add("hidden")
+
+    }
+
+    if( ((new Date().getTime() - data.lastMinedDate) / (1000 * 60 * 60 * 24) ) < 1  ){
+    
+      switch (user.lastMinedAmout) {
+    
+    
+        case "special":
+          mineBalance.innerHTML = (data.lastMinedAmout - 500 )?.toLocaleString()
+          boldMineBal.innerHTML = (data.lastMinedAmout - 500 )?.toLocaleString()
+          xminingBalance.innerHTML = (data.lastMinedAmout - 500 )?.toLocaleString()
+          mineTotal.innerHTML = ( (data.lastMinedAmout - 500 ) / 500 )?.toLocaleString()
+          break;
+    
+        case "premium":
+          mineBalance.innerHTML = (data.lastMinedAmout - 1000 )?.toLocaleString()
+          boldMineBal.innerHTML = (data.lastMinedAmout - 1000 )?.toLocaleString()
+          xminingBalance.innerHTML = (data.lastMinedAmout - 1000 )?.toLocaleString()
+          mineTotal.innerHTML = ( (data.lastMinedAmout - 1000 ) / 1000 )?.toLocaleString()
+          break;
+    
+        case "pro":
+            mineBalance.innerHTML = (data.lastMinedAmout - 2000 )?.toLocaleString()
+            boldMineBal.innerHTML = (data.lastMinedAmout - 2000 )?.toLocaleString()
+            xminingBalance.innerHTML = (data.lastMinedAmout - 2000 )?.toLocaleString()
+            mineTotal.innerHTML = ( (data.lastMinedAmout - 2000 ) / 2000 )?.toLocaleString()
+            break;
+    
+        case "lite":
+          mineBalance.innerHTML = (data.lastMinedAmout - 5000 )?.toLocaleString()
+          boldMineBal.innerHTML = (data.lastMinedAmout - 5000 )?.toLocaleString()
+          xminingBalance.innerHTML = (data.lastMinedAmout - 5000 )?.toLocaleString()
+          mineTotal.innerHTML = ( (data.lastMinedAmout - 5000 ) / 5000 )?.toLocaleString()
+          break;
+    
+        case "xlite":
+          mineBalance.innerHTML = (data.lastMinedAmout - 10000 )?.toLocaleString()
+          boldMineBal.innerHTML = (data.lastMinedAmout - 10000 )?.toLocaleString()
+          xminingBalance.innerHTML = (data.lastMinedAmout - 10000 )?.toLocaleString()
+          mineTotal.innerHTML = ( (data.lastMinedAmout - 10000 ) / 10000 )?.toLocaleString()
+          break;
+      
+        default:
+          mineBalance.innerHTML = (data.lastMinedAmout - 200 )?.toLocaleString()
+          boldMineBal.innerHTML = (data.lastMinedAmout - 200 )?.toLocaleString()
+          xminingBalance.innerHTML = (data.lastMinedAmout - 200 )?.toLocaleString()
+          mineTotal.innerHTML = ( (data.lastMinedAmout - 200 ) / 200 )?.toLocaleString()
+          break;
+      }
+    
+    } else {
+    
+        switch (user.lastMinedAmout) {
+    
+        case "special":
+          mineBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
+          boldMineBal.innerHTML = data.lastMinedAmout?.toLocaleString()
+          xminingBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
+          mineTotal.innerHTML = data.lastMinedAmout?.toLocaleString()
+          break;
+    
+        case "premium":
+          mineBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
+          boldMineBal.innerHTML = data.lastMinedAmout?.toLocaleString()
+          xminingBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
+          mineTotal.innerHTML = data.lastMinedAmout?.toLocaleString()
+          break;
+    
+        case "pro":
+            mineBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
+            boldMineBal.innerHTML = data.lastMinedAmout?.toLocaleString()
+            xminingBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
+            mineTotal.innerHTML = data.lastMinedAmout?.toLocaleString()
+            break;
+    
+        case "lite":
+          mineBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
+          boldMineBal.innerHTML = data.lastMinedAmout?.toLocaleString()
+          xminingBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
+          mineTotal.innerHTML = data.lastMinedAmout?.toLocaleString()
+          break;
+    
+        case "xlite":
+          mineBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
+          boldMineBal.innerHTML = data.lastMinedAmout?.toLocaleString()
+          xminingBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
+          mineTotal.innerHTML = data.lastMinedAmout?.toLocaleString()
+          break;
+      
+        default:
+          mineBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
+          boldMineBal.innerHTML = data.lastMinedAmout?.toLocaleString()
+          xminingBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
+          mineTotal.innerHTML = data.lastMinedAmout?.toLocaleString()
+          break;
+      }
+    
+    }
+    
 
     localStorage.setItem("user", JSON.stringify(data))
 
@@ -107,8 +221,8 @@ async function getReferralls(){
             console.log(data);
 
             totalRef.innerHTML = data.length
-            refBalance.innerHTML = ( (data.length * 1000) - user.amountWithdrawn ).toLocaleString()
-            xrefBalance.innerHTML = ( (data.length * 1000) - user.amountWithdrawn ).toLocaleString()
+            refBalance.innerHTML = ( (data.length * 1000) - user.amountWithdrawn )?.toLocaleString()
+            xrefBalance.innerHTML = ( (data.length * 1000) - user.amountWithdrawn )?.toLocaleString()
             xtotalRef.innerHTML = data.length
             localStorage.setItem("ref", JSON.stringify(data))
 
@@ -150,9 +264,9 @@ async function getReferralls(){
 getReferralls()
 
 
-async function getTotalMined(){
+async function startMine(){
     fetch(`${url}/user/mine/${user._id}`, {
-        method: "GET",
+        method: "PUT",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
             token: `Bearer ${user?.token}`
@@ -166,21 +280,16 @@ async function getTotalMined(){
         })
         .then(function (data) {
           console.log(data);
-          
-            mineBalance.innerHTML = data.balance.toLocaleString()
-            boldMineBal.innerHTML = data.balance.toLocaleString()
-            xminingBalance.innerHTML = data.balance.toLocaleString()
-            mineTotal.innerHTML = data.total.toLocaleString()
-            localStorage.setItem("mine", JSON.stringify(data))
+          window.location.reload()
+
+            // localStorage.setItem("mine", JSON.stringify(data))
         })
         .catch(function (err) {
           console.log(err)
         })
 }
 
-if(user.verified) {
-    getTotalMined()
-} else {
+if(!user.verified){
     mineTotal.innerHTML = 0;    boldMineBal.innerHTML = 0;    mineTotal.innerHTML = 0;
 }
 

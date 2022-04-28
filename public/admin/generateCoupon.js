@@ -3,6 +3,9 @@
 const starter = document.querySelector(".starter")
 const special = document.querySelector(".special")
 const premium = document.querySelector(".premium")
+const pro = document.querySelector(".pro")
+const lite = document.querySelector(".lite")
+const xlite = document.querySelector(".xlite")
 
 
 const generateCoupon = async (type) => {
@@ -44,4 +47,10 @@ starter.addEventListener("click",  generateCoupon.bind(null, "starter"))
 special.addEventListener("click",  generateCoupon.bind(null, "special"))
 
 premium.addEventListener("click",  generateCoupon.bind(null, "premium"))
+
+pro.addEventListener("click",  generateCoupon.bind(null, "pro"))
+
+lite.addEventListener("click",  generateCoupon.bind(null, "lite"))
+
+xlite.addEventListener("click",  generateCoupon.bind(null, "xlite"))
 
