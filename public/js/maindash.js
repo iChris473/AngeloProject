@@ -81,9 +81,8 @@ const getUpdatesOnUser = () => {
     }
 
     if( ((new Date().getTime() - data.lastMinedDate) / (1000 * 60 * 60 * 24) ) < 1  ){
-    
-      switch (user.lastMinedAmout) {
-    
+
+      switch (data.package) {
     
         case "special":
           mineBalance.innerHTML = (data.lastMinedAmout - 500 )?.toLocaleString()
@@ -106,14 +105,16 @@ const getUpdatesOnUser = () => {
             mineTotal.innerHTML = ( (data.lastMinedAmout - 2000 ) / 2000 )?.toLocaleString()
             break;
     
-        case "lite":
+        case "lite":{
           mineBalance.innerHTML = (data.lastMinedAmout - 5000 )?.toLocaleString()
           boldMineBal.innerHTML = (data.lastMinedAmout - 5000 )?.toLocaleString()
           xminingBalance.innerHTML = (data.lastMinedAmout - 5000 )?.toLocaleString()
           mineTotal.innerHTML = ( (data.lastMinedAmout - 5000 ) / 5000 )?.toLocaleString()
+        }
           break;
     
         case "xlite":
+          console.log(data.lastMinedAmout)
           mineBalance.innerHTML = (data.lastMinedAmout - 10000 )?.toLocaleString()
           boldMineBal.innerHTML = (data.lastMinedAmout - 10000 )?.toLocaleString()
           xminingBalance.innerHTML = (data.lastMinedAmout - 10000 )?.toLocaleString()
@@ -130,7 +131,7 @@ const getUpdatesOnUser = () => {
     
     } else {
     
-        switch (user.lastMinedAmout) {
+        switch (data.package) {
     
         case "special":
           mineBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
@@ -288,6 +289,8 @@ async function startMine(){
           console.log(err)
         })
 }
+
+power.addEventListener("click", startMine)
 
 if(!user.verified){
     mineTotal.innerHTML = 0;    boldMineBal.innerHTML = 0;    mineTotal.innerHTML = 0;
