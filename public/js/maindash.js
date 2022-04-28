@@ -131,55 +131,15 @@ const getUpdatesOnUser = () => {
     
     } else {
     
-        switch (data.package) {
-    
-        case "special":
-          mineBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
-          boldMineBal.innerHTML = data.lastMinedAmout?.toLocaleString()
-          xminingBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
-          mineTotal.innerHTML = data.lastMinedAmout?.toLocaleString()
-          break;
-    
-        case "premium":
-          mineBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
-          boldMineBal.innerHTML = data.lastMinedAmout?.toLocaleString()
-          xminingBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
-          mineTotal.innerHTML = data.lastMinedAmout?.toLocaleString()
-          break;
-    
-        case "pro":
-            mineBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
-            boldMineBal.innerHTML = data.lastMinedAmout?.toLocaleString()
-            xminingBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
-            mineTotal.innerHTML = data.lastMinedAmout?.toLocaleString()
-            break;
-    
-        case "lite":
-          mineBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
-          boldMineBal.innerHTML = data.lastMinedAmout?.toLocaleString()
-          xminingBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
-          mineTotal.innerHTML = data.lastMinedAmout?.toLocaleString()
-          break;
-    
-        case "xlite":
-          mineBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
-          boldMineBal.innerHTML = data.lastMinedAmout?.toLocaleString()
-          xminingBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
-          mineTotal.innerHTML = data.lastMinedAmout?.toLocaleString()
-          break;
-      
-        default:
-          mineBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
-          boldMineBal.innerHTML = data.lastMinedAmout?.toLocaleString()
-          xminingBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
-          mineTotal.innerHTML = data.lastMinedAmout?.toLocaleString()
-          break;
-      }
+      mineBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
+      boldMineBal.innerHTML = data.lastMinedAmout?.toLocaleString()
+      xminingBalance.innerHTML = data.lastMinedAmout?.toLocaleString()
+      mineTotal.innerHTML = data.lastMinedAmout?.toLocaleString()
     
     }
     
 
-    localStorage.setItem("user", JSON.stringify(data))
+    window.localStorage.setItem("user", JSON.stringify(data))
 
   })
   .catch(function (err) {
@@ -221,15 +181,15 @@ async function getReferralls(){
             // Main Logic for all referall data
             console.log(data);
 
-            totalRef.innerHTML = data.length
-            refBalance.innerHTML = ( (data.length * 1000) - user.amountWithdrawn )?.toLocaleString()
-            xrefBalance.innerHTML = ( (data.length * 1000) - user.amountWithdrawn )?.toLocaleString()
-            xtotalRef.innerHTML = data.length
+            totalRef.innerHTML = data.verifiedReferred
+            refBalance.innerHTML = ( (data.verifiedReferred * 1000) - user.amountWithdrawn )?.toLocaleString()
+            xrefBalance.innerHTML = ( (data.verifiedReferred * 1000) - user.amountWithdrawn )?.toLocaleString()
+            xtotalRef.innerHTML = data.verifiedReferred
             localStorage.setItem("ref", JSON.stringify(data))
 
             // LOGIC FOR RENDERING REFERRED USERS IN THE TABLE
 
-            data.forEach((user) =>{
+            data.referred.forEach((user) =>{
 
                 const tableRow = document.createElement("tr")
                 tableRow.className = "border-b hover:bg-opacity-70 bg-opacity-40 bg-gray-800 border-gray-700"

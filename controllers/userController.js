@@ -300,7 +300,11 @@ exports.getReferredUsers = async (req, res) => {
     try {
 
         const referred = await User.find({referrer: req.query.username})
-        res.status(200).json(referred)
+        const verifiedReferred = await User.find({referrer: req.query.username, verified: true})
+        res.status(200).json({
+            referred,
+            verifiedReferred: verifiedReferred.length
+        })
         
     } catch (error) {
         res.status(400).json('An error occured while trying to verify your account')

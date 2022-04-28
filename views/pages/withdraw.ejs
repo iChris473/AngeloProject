@@ -58,8 +58,45 @@
                 const withdrwBtn = document.querySelector('.withdrwBtn');
                 const referrBtn = document.querySelector('.referrBtn');
 
-                document.querySelector('.refBalance').innerHTML = "NGN " + ( (refs.length * 1000) - user.amountWithdrawn ).toLocaleString();                
-                document.querySelector('.mineBalance').innerHTML = "NGN " + mine.balance.toLocaleString();
+                const refBalance = document.querySelector('.refBalance')
+                // "NGN " + ( (refs.length * 1000) - user.amountWithdrawn ).toLocaleString();                
+                const mineBalance = document.querySelector('.mineBalance')
+
+                if (((new Date().getTime() - data.lastMinedDate) / (1000 * 60 * 60 * 24)) < 1) {
+
+                        switch (user.package) {
+
+                            case "special":
+                                mineBalance.innerHTML = "NGN " + (user.lastMinedAmout - 500)?.toLocaleString();
+                                break;
+
+                            case "premium":
+                                mineBalance.innerHTML = "NGN " + (user.lastMinedAmout - 1000)?.toLocaleString();
+                                break;
+
+                            case "pro":
+                                mineBalance.innerHTML = "NGN " + (user.lastMinedAmout - 2000)?.toLocaleString();
+                                break;
+
+                            case "lite": {
+                                mineBalance.innerHTML = "NGN " + (user.lastMinedAmout - 5000)?.toLocaleString();
+                            }
+                                break;
+
+                            case "xlite":
+                                mineBalance.innerHTML = "NGN " + (user.lastMinedAmout - 10000)?.toLocaleString();
+                                break;
+
+                            default:
+                                mineBalance.innerHTML = "NGN " + (user.lastMinedAmout - 200)?.toLocaleString();
+                                break;
+                        }
+
+                } else {
+                        mineBalance.innerHTML = "NGN " + (user.lastMinedAmout)?.toLocaleString();
+                    }
+                
+
 
                 if(user.withdraw){
                     withdrwBtn.innerHTML = "PENDING..."

@@ -51,7 +51,7 @@ const submitForm = async e => {
       })
       .then(function (data) {
         console.log(data);
-        localStorage.setItem("user", JSON.stringify(data))
+        window.localStorage.setItem("user", JSON.stringify(data))
         submit.innerHTML = "Login"
         window.location.href = "/dashboard"
       })
