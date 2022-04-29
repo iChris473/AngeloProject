@@ -13,6 +13,7 @@
                         <script src="/public/js/dash2.js"></script>
                         <script>
                             const newUser = JSON.parse(window.localStorage.getItem('user'));
+                            const allRefs = JSON.parse(window.localStorage.getItem('ref'))
                         </script>
                         <div class="mt-10 m-5">
                             <h1 class="ultra text-4xl text-center mt-12">My Dashboard</h1>
@@ -31,25 +32,173 @@
                                     <!-- <p class="text-3xl mb-10 ultra">NGN 6,000</p> -->
                                     <div class="w-full p-5 flex gap-5 items-center justify-between">
                                         <div class="greenDot"></div>
-                                        <p class="flex-1 font-semibold text-lg">Total Amount Traded: <b class="mineTotal"></b></p>
+                                        <p class="flex-1 font-semibold text-lg">Total Amount of Trades: 
+                                            <b class="mineTotal">
+                                                <script>
+
+                                                     const mineTotal = document.querySelector(".mineTotal");
+
+                                                        if( ((new Date().getTime() - newUser.lastMinedDate) / (1000 * 60 * 60 * 24) ) < 1  ){
+
+                                                            switch (newUser.package) {
+
+                                                            case "special":
+                                                                mineTotal.innerHTML = ( (newUser.lastMinedAmout - 500 ) / 500 )?.toLocaleString()
+                                                                break;
+
+                                                            case "premium":
+                                                                mineTotal.innerHTML = ( (newUser.lastMinedAmout - 1000 ) / 1000 )?.toLocaleString()
+                                                                break;
+
+                                                            case "pro":
+                                                                mineTotal.innerHTML = ( (newUser.lastMinedAmout - 2000 ) / 2000 )?.toLocaleString()
+                                                                break;
+
+                                                            case "lite":{
+                                                                mineTotal.innerHTML = ( (newUser.lastMinedAmout - 5000 ) / 5000 )?.toLocaleString()
+                                                            }
+                                                                break;
+
+                                                            case "xlite":
+                                                                console.log(newUser.lastMinedAmout)
+                                                                mineTotal.innerHTML = ( (newUser.lastMinedAmout - 10000 ) / 10000 )?.toLocaleString()
+                                                                break;
+
+                                                            default:
+                                                                mineTotal.innerHTML = ( (newUser.lastMinedAmout - 200 ) / 200 )?.toLocaleString()
+                                                                break;
+                                                            }
+
+                                                            } else {
+
+                                                                switch (newUser.package) {
+
+                                                                    case "special":
+                                                                        mineTotal.innerHTML = ( (newUser.lastMinedAmout ) / 500 )?.toLocaleString()
+                                                                        break;
+
+                                                                    case "premium":
+                                                                        mineTotal.innerHTML = ( (newUser.lastMinedAmout ) / 1000 )?.toLocaleString()
+                                                                        break;
+
+                                                                    case "pro":
+                                                                        mineTotal.innerHTML = ( (newUser.lastMinedAmout ) / 2000 )?.toLocaleString()
+                                                                        break;
+
+                                                                    case "lite":{
+                                                                        mineTotal.innerHTML = ( (newUser.lastMinedAmout ) / 5000 )?.toLocaleString()
+                                                                    }
+                                                                        break;
+
+                                                                    case "xlite":
+                                                                        console.log(newUser.lastMinedAmout)
+                                                                        mineTotal.innerHTML = ( (newUser.lastMinedAmout ) / 10000 )?.toLocaleString()
+                                                                        break;
+
+                                                                    default:
+                                                                        mineTotal.innerHTML = ( (newUser.lastMinedAmout ) / 200 )?.toLocaleString()
+                                                                        break;
+                                                                    }
+
+
+                                                            }
+                                                </script>
+                                            </b>
+                                        </p>
                                     </div>
                                     <div class="w-full p-5 flex gap-5 items-center justify-between">
                                         <div class="greenDot"></div>
-                                        <p class="flex-1 font-semibold text-lg">Mining Balance: <b class="mineBalance"></b> <b>Naira</b></p>
+                                        <p class="flex-1 font-semibold text-lg">Trading Balance: 
+                                          <b class="mineBalance">
+                                            <script>
+
+                                                const mineBalance = document.querySelector(".mineBalance");
+
+                                                   if( ((new Date().getTime() - newUser.lastMinedDate) / (1000 * 60 * 60 * 24) ) < 1  ){
+
+                                                       switch (newUser.package) {
+
+                                                       case "special":
+                                                           mineBalance.innerHTML = ( (newUser.lastMinedAmout - 500 ))?.toLocaleString()
+                                                           break;
+
+                                                       case "premium":
+                                                           mineBalance.innerHTML = ( (newUser.lastMinedAmout - 1000 ))?.toLocaleString()
+                                                           break;
+
+                                                       case "pro":
+                                                           mineBalance.innerHTML = ( (newUser.lastMinedAmout - 2000 ))?.toLocaleString()
+                                                           break;
+
+                                                       case "lite":{
+                                                           mineBalance.innerHTML = ( (newUser.lastMinedAmout - 5000 ))?.toLocaleString()
+                                                       }
+                                                           break;
+
+                                                       case "xlite":
+                                                           console.log(newUser.lastMinedAmout)
+                                                           mineBalance.innerHTML = ( (newUser.lastMinedAmout - 10000 ))?.toLocaleString()
+                                                           break;
+
+                                                       default:
+                                                           mineBalance.innerHTML = ( (newUser.lastMinedAmout - 200 )  )?.toLocaleString()
+                                                           break;
+                                                       }
+
+                                                       } else {
+
+                                                            mineBalance.innerHTML = newUser.lastMinedAmout?.toLocaleString()
+
+                                                       }
+                                           </script>
+                                          </b>
+                                         <b>Naira</b>
+                                        </p>
                                     </div>
                                     <div class="w-full p-5 flex gap-5 items-center justify-between">
                                         <div class="greenDot"></div>
-                                        <p class="flex-1 font-semibold text-lg">Referall Balance: <b class="refBalance"></b> <b>Naira</b></p>
+                                        <p class="flex-1 font-semibold text-lg">Referall Balance: 
+                                            <b class="refBalance">
+                                                <script>
+                                                    document.querySelector(".refBalance")
+                                                    .innerHTML = ( (allRefs.verifiedReferred * 1000) - newUser.amountWithdrawn )?.toLocaleString()                             
+                                               </script>
+                                            </b>
+                                            <b>Naira</b>
+                                        </p>
                                     </div>
                                     <div class="w-full p-5 flex gap-5 items-center justify-between">
                                         <div class="greenDot"></div>
-                                        <p class="flex-1 font-semibold text-lg">Total Referalls: <b class="totalRef"></b></p>
+                                        <p class="flex-1 font-semibold text-lg">Total Referalls: 
+                                            <b class="totalRef">
+                                                <script>
+                                                    document.querySelector(".totalRef")
+                                                    .innerHTML = allRefs.verifiedReferred                               
+                                               </script>
+                                            </b>
+                                        </p>
                                     </div>
                                     <div class="w-full p-5 flex gap-5 items-center justify-between">
                                         <div class="greenDot"></div>
-                                        <p class="flex-1 font-semibold text-lg">Status: <b class="verified p-2"></b></p>
+                                        <p class="flex-1 font-semibold text-lg">Status:
+                                            <b class="verified p-2">
+                                                <script>
+                                                    const verifiedStatus = document.querySelector(".verified")
+                                                    if(newUser.verified){
+                                                        verifiedStatus.innerHTML = "Verified";
+                                                        verifiedStatus.classList.add("text-green-500")                       
+                                                    } else {
+                                                        verifiedStatus.innerHTML = "Not Verified";
+                                                        verifiedStatus.classList.add("text-pink-500")                       
+                                                    }
+                                               </script>
+                                            </b>
+                                        </p>
                                     </div>
                                     <div class="w-full p-5 flex gap-5 items-start justify-start veriyParent">
+                                        <script>
+                                            newUser.verified && document.querySelector("veriyParent").classList.add("hidden")
+                                        </script>
                                         <div class="greenDot mt-3"></div>
                                         <form class="verifyForm flex flex-col w-full items-start">
                                             <p class="flex-1 font-semibold text-lg apiError"></p> 
@@ -57,17 +206,68 @@
                                             <input type="text" name="accountNumber" placeholder="Enter the coupon code you bouught from our vendor" class="outline-none rounded-md w-[95%] max-w-[800px] p-2 border-b border-green-700 bg-transparent verifyInput" >
                                             <button type="submit" class="greenBtn shadow-md shadow-green-700 py-2 rounded-md px-10 font-bold text-md tracking-wide my-2 block verifyBtn">Verify</button>
                                         </form>
+                                        <script>
+
+                                            const verifyForm = document.querySelector("verifyForm")
+                                            const Input = document.querySelector("verifyInput")
+                                            const verifyButton = document.querySelector("verifyBtn")
+                                            const verifyApiError = document.querySelector("apiError")
+
+                                             function veifyUserAccount(e){
+
+                                                    e.preventDefault();
+
+                                                    const userInfo = {
+                                                    email: newUser.email,
+                                                        coupon: Input.value
+                                                    } 
+
+                                                    verifyButton.innerHTML = "Verifying..."
+
+                                                    fetch(`${url}/user/verify`, {
+                                                        method: "PUT",
+                                                        body: JSON.stringify(userInfo),
+                                                        headers: {
+                                                        "Content-type": "application/json; charset=UTF-8",
+                                                        },
+                                                    })
+                                                        .then(function (response) {
+                                                            if (response.ok) {
+                                                                return response.json();
+                                                            } else {
+                                                                return response.text().then((text) => {
+                                                                    verifyApiError.innerHTML = text;
+                                                                    verifyApiError.classList.remove("hidden")
+                                                                    verifyButton.innerHTML = "Verify"
+                                                                    return Promise.reject()
+                                                                });
+                                                            }
+                                                            return Promise.reject(response);
+                                                        })
+                                                        .then(function (data) {
+
+                                                        console.log(data)
+
+                                                        const {verified, ...others} = newUser;
+                                                        const newVerifiedUser = {...others, verified: true}
+                                                        localStorage.setItem("user", JSON.stringify(newVerifiedUser))
+                                                            window.location.reload()
+
+                                                        })
+                                                        .catch(function (err) {
+                                                        console.log(err)
+                                                        })
+                                                    }
+
+                                                verifyForm.addEventListener("submit", veifyUserAccount)
+                                        </script>
                                     </div>
                                 </div>
-                                <div
-                                    class="border border-gray-800 rounded-md bg-black p-3 my-10 shadow-md shadow-gray-700 flex flex-col items-center justify-center gap-1 max-w-[900px] mx-auto">
+                                <div class="border border-gray-800 rounded-md bg-black p-3 my-10 shadow-md shadow-gray-700 flex flex-col items-center justify-center gap-1 max-w-[900px] mx-auto">
                                     <h1 class="ultra text-xl md:text-4xl mt-4 text-green-500 tracking-wider text-center">
                                         NairaCity Trading Engine
                                     </h1>
-                                    <p class="text-green-100 text-center">Our AI bot trades your money on the background
-                                        <br> and returns
-                                        profit
-                                        every 24 Hours</p>
+                                    <p class="text-green-100 text-center">Our AI bot trades your money on the background <br> and returns profit every 24 Hours</p>
                                     <img src="/public/img/minemine.gif" class="hidden w-[300px] object-contain mineGIf" alt="">
                                     <img src="/public/img/oops.png" class="w-[300px] object-contain oops mineGIf" alt="">
                                     <img src="/public/img/power.jpg" class="hidden w-[300px] object-contain oops power cursor-pointer" alt="">
@@ -87,14 +287,65 @@
                                         <p class="text-gray-100 text-md font-semibold text-center mx-5">Buy a coupon code from our vendor and enter it in your dashboard to verify your account, <a href="deposit" class="text-green-800 border-b border-green-800">click here</a> to buy a coupon code for any package.
                                         </p>
                                     </div>
+                                    <script>
+
+                                        const power = document.querySelector(".power")
+                                        const minemineParent = document.querySelector(".minemineParent")
+                                        const mining = document.querySelector(".mining")
+                                        const mineGIf = document.querySelector(".mineGIf")
+                                        const mine24 = document.querySelector(".mine24")
+                                        const buyCoupon = document.querySelector(".buyCoup")
+
+                                        newUser.verified && (buyCoupon.classList.add("hidden"))
+                                                                                
+                                        if( ( ((new Date().getTime() - newUser.lastMinedDate) / (1000 * 60 * 60 * 24))  < 1 ) && newUser.verified ){
+
+                                        power.classList.add("hidden")
+                                        minemineParent.classList.remove("hidden")
+                                        mining.classList.remove("hidden")
+                                        mineGIf.classList.remove("hidden")
+
+                                        } else {
+
+                                        newUser.verified && power.classList.remove("hidden")
+                                        newUser.verified && mine24.classList.remove("hidden")
+                                        minemineParent.classList.add("hidden")
+                                        mining.classList.add("hidden")
+                                        mineGIf.classList.add("hidden")
+
+                                        }
+
+                                        function startMine(){
+                                            fetch(`${url}/user/mine/${user._id}`, {
+                                                method: "PUT",
+                                                headers: {
+                                                "Content-type": "application/json; charset=UTF-8"
+                                                },
+                                            })
+                                                .then(function (response) {
+                                                if (response.ok) {
+                                                    return response.json();
+                                                }
+                                                return Promise.reject(response);
+                                                })
+                                                .then(function (data) {
+                                                console.log(data);
+                                                window.location.reload()
+
+                                                    // localStorage.setItem("mine", JSON.stringify(data))
+                                                })
+                                                .catch(function (err) {
+                                                console.log(err)
+                                                })
+                                        }
+
+                                        power.addEventListener("click", startMine)
+
+                                    </script>
                                 </div>
-                                <div
-                                    class="flex items-center justify-center flex-wrap my-10 gap-5 max-w-[900px] mx-auto">
+                                <div class="flex items-center justify-center flex-wrap my-10 gap-5 max-w-[900px] mx-auto">
                                     <div
                                         class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 flex items-center justify-between gap-10 w-full max-w-[400px] mx-auto">
-                                        <div class="space-y-2">
-                                            <p class="text-gray-200 font-bold text-xl">Trading Balance</p>
-                                            <p class="ultra text-2xl text-gray-400">NGN <span class="xminingBalance"></span></p>
                                         </div>
                                         <div class="purpleGrad w-10 h-10 opacity-50"></div>
                                     </div>
@@ -102,7 +353,14 @@
                                         class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 flex items-center justify-between gap-10 w-full max-w-[400px] mx-auto">
                                         <div class="space-y-2">
                                             <p class="text-gray-200 font-bold text-xl">Referral Balance</p>
-                                            <p class="ultra text-2xl text-gray-400">NGN <span class="xrefBalance"></span></p>
+                                            <p class="ultra text-2xl text-gray-400">NGN 
+                                                <span class="xrefBalance">
+                                                    <script>
+                                                        document.querySelector(".xrefBalance")
+                                                        .innerHTML = ( (allRefs.verifiedReferred * 1000) - newUser.amountWithdrawn )?.toLocaleString()                             
+                                                   </script>
+                                                </span>
+                                            </p>
                                         </div>
                                         <div class="purpleGrad w-10 h-10 opacity-50"></div>
                                     </div>
@@ -110,7 +368,12 @@
                                         class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 flex items-center justify-between gap-10 w-full max-w-[400px] mx-auto">
                                         <div class="space-y-2">
                                             <p class="text-gray-200 font-bold text-xl">Total Referral</p>
-                                            <p class="ultra text-2xl text-gray-400 xtotalRef"></p>
+                                            <p class="ultra text-2xl text-gray-400 xtotalRef">
+                                                <script>
+                                                    document.querySelector(".xtotalRef")
+                                                    .innerHTML = allRefs.verifiedReferred                               
+                                               </script>
+                                            </p>
                                         </div>
                                         <div class="purpleGrad w-10 h-10 opacity-50"></div>
                                     </div>
@@ -118,21 +381,49 @@
                                         class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 flex items-center justify-between gap-10 w-full max-w-[400px] mx-auto">
                                         <div class="space-y-2">
                                             <p class="text-gray-200 font-bold text-xl">Total Amount Withdrawn</p>
-                                            <p class="ultra text-2xl text-gray-400 amountWithdrawn"></p>
+                                            <p class="ultra text-2xl text-gray-400 amountWithdrawn">
+                                                <script>
+                                                    document.querySelector(".amountWithdrawn")
+                                                    .innerHTML = newUser.amountWithdrawn                               
+                                               </script>
+                                            </p>
                                         </div>
                                         <div class="purpleGrad w-10 h-10 opacity-50"></div>
                                     </div>
                                 </div>
-                                <div
-                                    class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 flex flex-col items-center justify-between gap-10 w-full max-w-[700px] mx-auto">
+                                <div class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 flex flex-col items-center justify-between gap-10 w-full max-w-[700px] mx-auto">
                                     <p class="text-gray-200 font-bold text-xl">Referral Link</p>
                                     <p class="text-red-400 mt-16 font-semibold text-lg hiddenRef">Your Referall link will appear when you verify your account</p>
                                     <p class="text-sm text-gray-400 rounded-md border border-green-600 p-2 w-full text-center refLink hidden refUsername">
-                                        
+                                        <script>
+                                            document.querySelector(".refUsername")
+                                            .innerHTML = "https://nairacity.herokuapp.com/register?ref=" + newUser.username                              
+                                       </script>
                                     </p>
                                     <p class="py-2 px-4 rounded-md bg-pink-600 font-bold cursor-pointer copyBtn hidden">Copy Referall
                                         Link
                                     </p>
+                                    <script>
+
+                                        const copyBtn = document.querySelector(".copyBtn")
+                                        const refLink = document.querySelector(".refLink")
+                                        const hiddenRef = document.querySelector(".hiddenRef")
+
+                                        const copyToClipboard = () => {
+                                        if (navigator && navigator.clipboard && navigator.clipboard.writeText){
+                                            navigator.clipboard.writeText(refLink.innerHTML)
+                                            copyBtn.innerHTML = "Copied to clipboard"
+                                            copyBtn.className = "py-2 px-4 rounded-md bg-green-600 font-bold cursor-pointer copyBtn"
+                                        }
+                                            // return navigator.clipboard.writeText(refLink.innerHTML);
+                                        return Promise.reject('The Clipboard API is not available.');
+                                        };
+
+                                        copyBtn.addEventListener("click", copyToClipboard)
+                                        newUser.verified && (hiddenRef.classList.add("hidden"))
+                                        newUser.verified && (copyBtn.classList.remove("hidden"))
+                                        newUser.verified && (refLink.classList.remove("hidden"))
+                                    </script>
                                 </div>
                             </div>
                             <div>
@@ -154,6 +445,41 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="tableBody">
+
+                                                <script>
+
+                                                    const tableBody = document.querySelector(".tableBody")
+
+                                                    allRefs.referred.forEach((user) =>{
+
+                                                    const tableRow = document.createElement("tr")
+
+                                                    tableRow.className = "border-b hover:bg-opacity-70 bg-opacity-40 bg-gray-800 border-gray-700"
+
+                                                    tableRow.innerHTML =
+
+                                                    `
+                                                        <th scope="row"
+                                                            class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                                                            ${newUser.name}
+                                                        </th>
+                                                        <td class="px-6 py-4">
+                                                            ${newUser.email}
+                                                        </td>
+                                                        <td class="px-6 py-4">
+                                                            <p
+                                                                class="${newUser.verified ? "bg-green-600" : "bg-red-600"} cursor-pointer text-center p-2 text-sm max-w-[100px] rounded-md text-white hover:underline">
+                                                                ${newUser.verified ? "Verified" : "Not Verified"}
+                                                            </p>
+                                                        </td>
+
+                                                    `
+                                                    tableBody.appendChild(tableRow)
+
+                                                    })
+
+
+                                                </script>
                                       
                                                 <!-- <tr
                                                     class="border-b hover:bg-opacity-70 bg-opacity-40 bg-gray-800 border-gray-700">
@@ -189,7 +515,7 @@
             <!-- Javascript codes and links -->
 
         <script src="/public/js/dashboard.js"></script>
-        <script src="/public/js/maindash.js"></script>
+        <!-- <script src="/public/js/maindash.js"></script> -->
 
     </body>
 
