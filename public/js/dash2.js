@@ -1,6 +1,6 @@
 
 
-const getUpdatesOnUser = () => {
+const getUserInformations = () => {
 
     fetch(`${url}/user/get/${user._id}?id=${user._id}`, {
     method: "GET",
@@ -26,6 +26,6 @@ const getUpdatesOnUser = () => {
     })
     }
   
-    getUpdatesOnUser()
+    getUserInformations()
   
   
