@@ -57,7 +57,7 @@ const getUpdatesOnUser = () => {
   .then(function (data) {
     console.log(data);
     
-    fullName.innerHTML = data.name
+    // fullName.innerHTML = data.name
 
     amountWithdrawn.innerHTML = data.amountWithdrawn
 
