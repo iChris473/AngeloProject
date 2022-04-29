@@ -30,9 +30,7 @@ const amountWithdrawn = document.querySelector(".amountWithdrawn")
 const power = document.querySelector(".power")
 const mine24 = document.querySelector(".mine24")
 
-fullName.innerHTML = "Welcome " + user.name;
-
- user.verified ? verified.innerHTML = "Verified" : verified.innerHTML = "Not Verified"
+ user.verified ? verified.inn = "Verified" : verified.innerHTML = "Not Verified"
  user.verified ? verified.classList.add("text-green-500") : verified.classList.add("text-pink-500")
  user.verified && (veriyParent.classList.add("hidden"))
  user.verified && (hiddenRef.classList.add("hidden"))
