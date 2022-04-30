@@ -48,7 +48,7 @@ const getUserInformations = () => {
                 // Main Logic for all referall data
                 console.log(data);
 
-                localStorage.setItem("ref", JSON.stringify(data))
+                window.localStorage.setItem("ref", JSON.stringify(data))
     
                 // LOGIC FOR RENDERING REFERRED USERS IN THE TABLE
     

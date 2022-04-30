@@ -172,8 +172,7 @@
                                         <p class="flex-1 font-semibold text-lg">Total Referalls: 
                                             <b class="totalRef">
                                                 <script>
-                                                    document.querySelector(".totalRef")
-                                                    .innerHTML = allRefs.verifiedReferred                               
+                                                    document.querySelector(".totalRef").innerHTML = allRefs.verifiedReferred                               
                                                </script>
                                             </b>
                                         </p>
@@ -196,9 +195,6 @@
                                         </p>
                                     </div>
                                     <div class="w-full p-5 flex gap-5 items-start justify-start veriyParent">
-                                        <script>
-                                            newUser.verified && document.querySelector("veriyParent").classList.add("hidden")
-                                        </script>
                                         <div class="greenDot mt-3"></div>
                                         <form class="verifyForm flex flex-col w-full items-start">
                                             <p class="flex-1 font-semibold text-lg apiError"></p> 
@@ -207,11 +203,11 @@
                                             <button type="submit" class="greenBtn shadow-md shadow-green-700 py-2 rounded-md px-10 font-bold text-md tracking-wide my-2 block verifyBtn">Verify</button>
                                         </form>
                                         <script>
-
-                                            const verifyForm = document.querySelector("verifyForm")
-                                            const Input = document.querySelector("verifyInput")
-                                            const verifyButton = document.querySelector("verifyBtn")
-                                            const verifyApiError = document.querySelector("apiError")
+                                             newUser.verified && document.querySelector(".veriyParent").classList.add("hidden")
+                                            const verifyForm = document.querySelector(".verifyForm")
+                                            const Input = document.querySelector(".verifyInput")
+                                            const verifyButton = document.querySelector(".verifyBtn")
+                                            const verifyApiError = document.querySelector(".apiError")
 
                                              function veifyUserAccount(e){
 
@@ -269,7 +265,7 @@
                                     </h1>
                                     <p class="text-green-100 text-center">Our AI bot trades your money on the background <br> and returns profit every 24 Hours</p>
                                     <img src="/public/img/minemine.gif" class="hidden w-[300px] object-contain mineGIf" alt="">
-                                    <img src="/public/img/oops.png" class="w-[300px] object-contain oops mineGIf" alt="">
+                                    <img src="/public/img/oops.png" class="w-[300px] object-contain oops" alt="">
                                     <img src="/public/img/power.jpg" class="hidden w-[300px] object-contain oops power cursor-pointer" alt="">
                                     <p class="text-sm text-center font-bold hidden mining">Trading...</p>
                                     <p class="mine24 text-gray-100 text-md font-semibold text-center mx-5 hidden">Click to activate AI bots to help you trade for the next 24 hours
@@ -277,7 +273,47 @@
                                     <div class="hidden minemineParent">
                                         <p class="text-green-500 font-bold text-center text-lg mt-5">Total amount traded:
                                         </p>
-                                        <p class="bg-gray-400 py-3 px-20 rounded-md text-black ultra text-2xl text-center">NGN <span class="boldMineBal"></span>
+                                        <p class="bg-gray-400 py-3 px-20 rounded-md text-black ultra text-2xl text-center">NGN <span class="boldMineBal">
+                                            <script>
+                                                const boldMineBalance = document.querySelector(".boldMineBal")
+                                                if( ((new Date().getTime() - newUser.lastMinedDate) / (1000 * 60 * 60 * 24) ) < 1  ){
+
+                                                    switch (newUser.package) {
+
+                                                    case "special":
+                                                        boldMineBalance.innerHTML = ( (newUser.lastMinedAmout - 500 ))?.toLocaleString()
+                                                        break;
+
+                                                    case "premium":
+                                                        boldMineBalance.innerHTML = ( (newUser.lastMinedAmout - 1000 ))?.toLocaleString()
+                                                        break;
+
+                                                    case "pro":
+                                                        boldMineBalance.innerHTML = ( (newUser.lastMinedAmout - 2000 ))?.toLocaleString()
+                                                        break;
+
+                                                    case "lite":{
+                                                        boldMineBalance.innerHTML = ( (newUser.lastMinedAmout - 5000 ))?.toLocaleString()
+                                                    }
+                                                        break;
+
+                                                    case "xlite":
+                                                        console.log(newUser.lastMinedAmout)
+                                                        boldMineBalance.innerHTML = ( (newUser.lastMinedAmout - 10000 ))?.toLocaleString()
+                                                        break;
+
+                                                    default:
+                                                        boldMineBalance.innerHTML = ( (newUser.lastMinedAmout - 200 )  )?.toLocaleString()
+                                                        break;
+                                                    }
+
+                                                    } else {
+
+                                                        boldMineBalance.innerHTML = newUser.lastMinedAmout?.toLocaleString()
+
+                                                    }
+                                                </script>
+                                        </span>
                                         </p>
                                         
                                     </div>
@@ -293,10 +329,12 @@
                                         const minemineParent = document.querySelector(".minemineParent")
                                         const mining = document.querySelector(".mining")
                                         const mineGIf = document.querySelector(".mineGIf")
+                                        const oops= document.querySelector(".oops")
                                         const mine24 = document.querySelector(".mine24")
                                         const buyCoupon = document.querySelector(".buyCoup")
 
                                         newUser.verified && (buyCoupon.classList.add("hidden"))
+                                        newUser.verified && (oops.classList.add("hidden"))
                                                                                 
                                         if( ( ((new Date().getTime() - newUser.lastMinedDate) / (1000 * 60 * 60 * 24))  < 1 ) && newUser.verified ){
 
@@ -346,18 +384,51 @@
                                 <div class="flex items-center justify-center flex-wrap my-10 gap-5 max-w-[900px] mx-auto">
                                     <div
                                         class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 flex items-center justify-between gap-10 w-full max-w-[400px] mx-auto">
-                                        </div>
-                                        <div class="purpleGrad w-10 h-10 opacity-50"></div>
-                                    </div>
-                                    <div
-                                        class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 flex items-center justify-between gap-10 w-full max-w-[400px] mx-auto">
                                         <div class="space-y-2">
-                                            <p class="text-gray-200 font-bold text-xl">Referral Balance</p>
+                                            <p class="text-gray-200 font-bold text-xl">Trading Balance</p>
                                             <p class="ultra text-2xl text-gray-400">NGN 
                                                 <span class="xrefBalance">
                                                     <script>
-                                                        document.querySelector(".xrefBalance")
-                                                        .innerHTML = ( (allRefs.verifiedReferred * 1000) - newUser.amountWithdrawn )?.toLocaleString()                             
+
+                                                        const tradingBalance = document.querySelector(".xrefBalance")
+
+                                                        if( ((new Date().getTime() - newUser.lastMinedDate) / (1000 * 60 * 60 * 24) ) < 1  ){
+
+                                                            switch (newUser.package) {
+
+                                                            case "special":
+                                                                tradingBalance.innerHTML = ( (newUser.lastMinedAmout - 500 ))?.toLocaleString()
+                                                                break;
+
+                                                            case "premium":
+                                                                tradingBalance.innerHTML = ( (newUser.lastMinedAmout - 1000 ))?.toLocaleString()
+                                                                break;
+
+                                                            case "pro":
+                                                                tradingBalance.innerHTML = ( (newUser.lastMinedAmout - 2000 ))?.toLocaleString()
+                                                                break;
+
+                                                            case "lite":{
+                                                                tradingBalance.innerHTML = ( (newUser.lastMinedAmout - 5000 ))?.toLocaleString()
+                                                            }
+                                                                break;
+
+                                                            case "xlite":
+                                                                console.log(newUser.lastMinedAmout)
+                                                                tradingBalance.innerHTML = ( (newUser.lastMinedAmout - 10000 ))?.toLocaleString()
+                                                                break;
+
+                                                            default:
+                                                                tradingBalance.innerHTML = ( (newUser.lastMinedAmout - 200 )  )?.toLocaleString()
+                                                                break;
+                                                            }
+
+                                                            } else {
+
+                                                                tradingBalance.innerHTML = newUser.lastMinedAmout?.toLocaleString()
+
+                                                            }
+
                                                    </script>
                                                 </span>
                                             </p>
@@ -367,10 +438,22 @@
                                     <div
                                         class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 flex items-center justify-between gap-10 w-full max-w-[400px] mx-auto">
                                         <div class="space-y-2">
+                                            <p class="text-gray-200 font-bold text-xl">Referral Balance</p>
+                                            <p class="ultra text-2xl text-gray-400 xreferalBalance">
+                                                    <script>
+                                                        document.querySelector(".xreferalBalance").innerText = "NGN " + ( (allRefs.verifiedReferred * 1000) - newUser.amountWithdrawn )?.toLocaleString();
+                                                    </script>
+                                            </p>
+                                        </div>
+                                        <div class="purpleGrad w-10 h-10 opacity-50"></div>
+                                    </div>
+                                    <div
+                                        class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 flex items-center justify-between gap-10 w-full max-w-[400px] mx-auto">
+                                        <div class="space-y-2">
                                             <p class="text-gray-200 font-bold text-xl">Total Referral</p>
-                                            <p class="ultra text-2xl text-gray-400 xtotalRef">
+                                            <p class="ultra text-2xl text-gray-400 xtotalReferall">
                                                 <script>
-                                                    document.querySelector(".xtotalRef")
+                                                    document.querySelector(".xtotalReferall")
                                                     .innerHTML = allRefs.verifiedReferred                               
                                                </script>
                                             </p>
@@ -450,7 +533,7 @@
 
                                                     const tableBody = document.querySelector(".tableBody")
 
-                                                    allRefs.referred.forEach((user) =>{
+                                                    allRefs.referred.forEach((ref) =>{
 
                                                     const tableRow = document.createElement("tr")
 
@@ -461,15 +544,15 @@
                                                     `
                                                         <th scope="row"
                                                             class="px-6 py-4 font-medium text-white whitespace-nowrap">
-                                                            ${newUser.name}
+                                                            ${ref.name}
                                                         </th>
                                                         <td class="px-6 py-4">
-                                                            ${newUser.email}
+                                                            ${ref.email}
                                                         </td>
                                                         <td class="px-6 py-4">
                                                             <p
-                                                                class="${newUser.verified ? "bg-green-600" : "bg-red-600"} cursor-pointer text-center p-2 text-sm max-w-[100px] rounded-md text-white hover:underline">
-                                                                ${newUser.verified ? "Verified" : "Not Verified"}
+                                                                class="${ref.verified ? "bg-green-600" : "bg-red-600"} cursor-pointer text-center p-2 text-sm max-w-[100px] rounded-md text-white hover:underline">
+                                                                ${ref.verified ? "Verified" : "Not Verified"}
                                                             </p>
                                                         </td>
 

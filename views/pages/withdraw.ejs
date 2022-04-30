@@ -62,7 +62,9 @@
                 // "NGN " + ( (refs.length * 1000) - user.amountWithdrawn ).toLocaleString();                
                 const mineBalance = document.querySelector('.mineBalance')
 
-                if (((new Date().getTime() - data.lastMinedDate) / (1000 * 60 * 60 * 24)) < 1) {
+                refBalance.innerHTML = "NGN " + ( (refs.verifiedReferred * 1000) - user.amountWithdrawn )?.toLocaleString();
+
+                if (((new Date().getTime() - user.lastMinedDate) / (1000 * 60 * 60 * 24)) < 1) {
 
                         switch (user.package) {
 
@@ -95,6 +97,8 @@
                 } else {
                         mineBalance.innerHTML = "NGN " + (user.lastMinedAmout)?.toLocaleString();
                     }
+
+                
                 
 
 
@@ -105,7 +109,7 @@
 
                 }
 
-                if(refs.length == 0){
+                if((refs.verifiedReferred * 1000) - user.amountWithdrawn == 0){
                     referrBtn.classList.remove("hidden")
                     withdrwBtn.classList.add("hidden")
                 } else {
