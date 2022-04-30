@@ -14,6 +14,7 @@
                         <script>
                             const newUser = JSON.parse(window.localStorage.getItem('user'));
                             const allRefs = JSON.parse(window.localStorage.getItem('ref'))
+
                         </script>
                         <div class="mt-10 m-5">
                             <h1 class="ultra text-4xl text-center mt-12">My Dashboard</h1>
@@ -169,12 +170,22 @@
                                     </div>
                                     <div class="w-full p-5 flex gap-5 items-center justify-between">
                                         <div class="greenDot"></div>
-                                        <p class="flex-1 font-semibold text-lg">Total Referalls: 
+                                        <p class="flex-1 font-semibold text-lg">Total Verified Referalls: 
                                             <b class="totalRef">
                                                 <script>
                                                     document.querySelector(".totalRef").innerHTML = allRefs.verifiedReferred                               
                                                </script>
                                             </b>
+                                        </p>
+                                    </div>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">NairaCity Package: 
+                                            <span class="packageType text-yellow-500">
+                                                <script>
+                                                    document.querySelector(".packageType").innerHTML = newUser.package                      
+                                               </script>
+                                            </span>
                                         </p>
                                     </div>
                                     <div class="w-full p-5 flex gap-5 items-center justify-between">
@@ -367,8 +378,8 @@
                                                 return Promise.reject(response);
                                                 })
                                                 .then(function (data) {
-                                                console.log(data);
-                                                window.location.reload()
+
+                                                    window.location.reload()
 
                                                     // localStorage.setItem("mine", JSON.stringify(data))
                                                 })
@@ -450,7 +461,7 @@
                                     <div
                                         class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 flex items-center justify-between gap-10 w-full max-w-[400px] mx-auto">
                                         <div class="space-y-2">
-                                            <p class="text-gray-200 font-bold text-xl">Total Referral</p>
+                                            <p class="text-gray-200 font-bold text-xl">Total Verified Referral</p>
                                             <p class="ultra text-2xl text-gray-400 xtotalReferall">
                                                 <script>
                                                     document.querySelector(".xtotalReferall")

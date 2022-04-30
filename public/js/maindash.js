@@ -2,9 +2,9 @@
 
 
 const fullName = document.querySelector(".fullName")
-const mineBalance = document.querySelector(".mineBalance")
-const mineTotal = document.querySelector(".mineTotal")
-const refBalance = document.querySelector(".refBalance")
+// const mineBalance = document.querySelector(".mineBalance")
+// const mineTotal = document.querySelector(".mineTotal")
+// const refBalance = document.querySelector(".refBalance")
 const totalRef = document.querySelector(".totalRef")
 const verified = document.querySelector(".verified")
 const verifyInput = document.querySelector(".verifyInput")
@@ -30,7 +30,7 @@ const amountWithdrawn = document.querySelector(".amountWithdrawn")
 const power = document.querySelector(".power")
 const mine24 = document.querySelector(".mine24")
 
- user.verified ? verified.inn = "Verified" : verified.innerHTML = "Not Verified"
+ user.verified ? verified.innerHTML = "Verified" : verified.innerHTML = "Not Verified"
  user.verified ? verified.classList.add("text-green-500") : verified.classList.add("text-pink-500")
  user.verified && (veriyParent.classList.add("hidden"))
  user.verified && (hiddenRef.classList.add("hidden"))
@@ -59,7 +59,7 @@ const getUpdatesOnUser = () => {
     
     // fullName.innerHTML = data.name
 
-    amountWithdrawn.innerHTML = data.amountWithdrawn
+    // amountWithdrawn.innerHTML = data.amountWithdrawn
 
     refLink.innerHTML = "https://nairacity.herokuapp.com/register?ref=" + data.username
 

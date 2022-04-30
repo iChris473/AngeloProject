@@ -28,7 +28,6 @@ const getUserInformations = () => {
   
     getUserInformations()
   
-
     async function getReferralls(){
         fetch(`${url}/user/referrals?username=${user.username}`, {
             method: "GET",

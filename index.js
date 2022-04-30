@@ -38,6 +38,9 @@ app.get("/account", (req, res) => res.render("./pages/account"))
 // Deposit route for User Domain
 app.get("/deposit", (req, res) => res.render("./pages/deposit"))
 
+// upgrade route for User Domain
+app.get("/upgrade", (req, res) => res.render("./pages/upgrade"))
+
 // Editprofile route for User Domain
 app.get("/editprofile", (req, res) => res.render("./pages/editprofile"))
 

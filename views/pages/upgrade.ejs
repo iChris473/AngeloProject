@@ -1,0 +1,237 @@
+
+
+<%- include('partials/header.ejs') %>
+
+    <body class="relative" style="background-color: #252525;">
+        <!-- Nav Section -->
+        <%- include('partials/dashnav.ejs') %>
+
+            <div class=" overflow-x-hidden grid grid-cols-4">
+                <!-- SideBar -->
+                <%- include('partials/dashside.ejs') %>
+    
+            <!-- Main Section -->
+            <section class="col-span-4 md:col-span-3 mt-16">
+                <div class="mt-10 m-5 min-h-screen">
+                    <div>
+                        <!-- Packages -->
+                        <div class="my-10 mb-40">
+                            <div class="flex flex-col items-center justify-center gap-2 mb-12">
+                                <h1 class="text-center text-3xl md:text-4xl font-sans tracking-wide font-bold text-green-500">
+                                    Upgrade your Subscription Package
+                                </h1>
+                                <p class="text-center italic text-sm max-w-[500px] mx-auto text-gray-200">Select the best subscription package that suits your pocket. enter upgrade coupon code to upgrade your account after buying one from our admin, click on the <b class="text-green-400">"Upgrade to this Package"</b> button to get an upgrade code</p>
+                                <div class="flex items-center justify-center">
+                                    <form class="verifyForm flex flex-col w-full items-center justify-center mt-20">
+                                        <p class="flex-1 font-semibold text-lg apiError"></p> 
+                                        <p class="flex-1 font-semibold text-lg ">Upgrade Account (Enter Coupon Code): </p> 
+                                        <input type="text" name="accountNumber" placeholder="Enter the coupon code you bouught from our vendor" class="outline-none rounded-md w-[95%] max-w-[800px] p-2 border-b border-green-700 bg-transparent verifyInput" >
+                                        <button type="submit" class="greenBtn shadow-md shadow-green-700 py-2 rounded-md px-10 font-bold text-md tracking-wide my-2 block verifyBtn">Upgrade</button>
+                                    </form>
+                                    <script>
+                                        
+                                        const verifyButton = document.querySelector(".verifyBtn")
+                                        const verifyApiError = document.querySelector(".apiError")
+                                        const verifyForm = document.querySelector(".verifyForm")
+                                        const Input = document.querySelector(".verifyInput")
+
+                                        function veifyUserAccount(e){
+
+                                            e.preventDefault();
+
+                                            const userInfo = {
+                                            email: user.email,
+                                            coupon: Input.value
+                                            } 
+
+                                            verifyButton.innerHTML = "Upgrading..."
+
+                                            fetch(`${url}/user/verify`, {
+                                                method: "PUT",
+                                                body: JSON.stringify(userInfo),
+                                                headers: {
+                                                "Content-type": "application/json; charset=UTF-8",
+                                                },
+                                            })
+                                                .then(function (response) {
+                                                    if (response.ok) {
+                                                        return response.json();
+                                                    } else {
+                                                        return response.text().then((text) => {
+                                                            verifyApiError.innerHTML = text;
+                                                            verifyApiError.classList.remove("hidden")
+                                                            verifyButton.innerHTML = "Upgrade"
+                                                            return Promise.reject()
+                                                        });
+                                                    }
+                                                    return Promise.reject(response);
+                                                })
+                                                .then(function (data) {
+
+                                                console.log(data)
+                                                window.location.href = "/dashboard"
+
+                                                })
+                                                .catch(function (err) {
+                                                console.log(err)
+                                                })
+                                            }
+
+                                            verifyForm.addEventListener("submit", veifyUserAccount)
+
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="specialPackage hidden">
+                                <div class="border border-gray-800 rounded-md lightDark p-3 my-10 shadow-md shadow-gray-700 flex flex-col items-center justify-center gap-1 ">
+                                    <h1 class="ultra text-2xl md:text-4xl mt-4 text-green-500 tracking-wider">Special Package</h1>
+                                    <p class="text-green-100">Get <b>NGN 500</b> as profit Every 24 Hour</p>
+                                    <div class="greenLine h-[2px] my-5 w-full" ></div>
+                                    <p class="text-3xl mb-10 ultra">NGN 5,000</p>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Daily Trading Profit: <b>500 Naira</b></p>
+                                    </div>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Daily Trading Profit: Every <b>24 Hour</b></p>
+                                    </div>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Daily Trading: Enabled</p>
+                                    </div>
+                                    <a href="https://api.whatsapp.com/send?phone=+2349134534917&text=Hello%20NairaCity%20Admin%2C%20I%20am%20ready%20to%20upgrade%20my%20nairacity%20investment%20plan%20to%20Special%20package">
+                                        <button class="greenBtn shadow-md shadow-green-700 p-4 rounded-full px-10 font-bold text-md tracking-wide my-5">
+                                            Upgrade to this Package
+                                        </button>
+                                    </a>
+                                </div>
+                                    <script>
+                                       (user.package == "starter") && document.querySelector('.specialPackage').classList.remove('hidden');
+                                    </script>
+                            </div>
+                            <div class="premiumPackage hidden">
+                                <div class="border border-gray-800 rounded-md lightDark p-3 my-10 shadow-md shadow-gray-700 flex flex-col items-center justify-center gap-1">
+                                    <h1 class="ultra text-2xl md:text-4xl mt-4 text-green-500 tracking-wider">Premium Package</h1>
+                                    <p class="text-green-100">Get <b>NGN 1,000</b> as profit Every 24 Hour</p>
+                                    <div class="greenLine h-[2px] my-5 w-full" ></div>
+                                    <p class="text-3xl mb-10 ultra">NGN 10,000</p>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Daily Trading Profit: <b>1,000 Naira</b></p>
+                                    </div>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Daily Trading Profit: Every <b>24 Hour</b></p>
+                                    </div>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Daily Trading: Enabled</p>
+                                    </div>
+                                    <a href="https://api.whatsapp.com/send?phone=+2349134534917&text=Hello%20NairaCity%20Admin%2C%20I%20am%20ready%20to%20upgrade%20my%20nairacity%20investment%20plan%20to%20Premium%20package">
+                                        <button class="greenBtn shadow-md shadow-green-700 p-4 rounded-full px-10 font-bold text-md tracking-wide my-5">
+                                            Upgrade to this Package
+                                        </button>
+                                    </a>
+                                    <script>
+                                        (user.package == "starter" || user.package == "special") && document.querySelector('.premiumPackage').classList.remove('hidden');
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="hidden proPackage">
+                                <div class="border border-gray-800 rounded-md lightDark p-3 my-10 shadow-md shadow-gray-700 flex flex-col items-center justify-center gap-1">
+                                    <h1 class="ultra text-2xl md:text-4xl mt-4 text-green-500 tracking-wider">Pro Package</h1>
+                                    <p class="text-green-100">Get <b>NGN 2,000</b> as profit Every 24 Hour</p>
+                                    <div class="greenLine h-[2px] my-5 w-full" ></div>
+                                    <p class="text-3xl mb-10 ultra">NGN 20,000</p>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Daily Trading Profit: <b>2,000 Naira</b></p>
+                                    </div>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Daily Trading Profit: Every <b>24 Hour</b></p>
+                                    </div>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Daily Trading: Enabled</p>
+                                    </div>
+                                    <a href="https://api.whatsapp.com/send?phone=+2349134534917&text=Hello%20NairaCity%20Admin%2C%20I%20am%20ready%20to%20upgrade%20my%20nairacity%20investment%20plan%20to%20Pro%20package">
+                                        <button class="greenBtn shadow-md shadow-green-700 p-4 rounded-full px-10 font-bold text-md tracking-wide my-5">
+                                            Upgrade to this Package
+                                        </button>
+                                    </a>
+                                </div>
+                                <script>
+                                   (user.package == "starter" || user.package == "special" || user.package == "premium") && document.querySelector('.proPackage').classList.remove('hidden');
+                                </script>
+                            </div>
+                            <div class="hidden litePackage">
+                                <div class="border border-gray-800 rounded-md lightDark p-3 my-10 shadow-md shadow-gray-700 flex flex-col items-center justify-center gap-1">
+                                    <h1 class="ultra text-2xl md:text-4xl mt-4 text-green-500 tracking-wider">Lite Package</h1>
+                                    <p class="text-green-100">Get <b>NGN 5,000</b> as profit Every 24 Hour</p>
+                                    <div class="greenLine h-[2px] my-5 w-full" ></div>
+                                    <p class="text-3xl mb-10 ultra">NGN 50,000</p>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Daily Trading Profit: <b>5,000 Naira</b></p>
+                                    </div>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Daily Trading Profit: Every <b>24 Hour</b></p>
+                                    </div>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Daily Trading: Enabled</p>
+                                    </div>
+                                    <a href="https://api.whatsapp.com/send?phone=+2349134534917&text=Hello%20NairaCity%20Admin%2C%20I%20am%20ready%20to%20upgrade%20my%20nairacity%20investment%20plan%20to%20Lite%20package">
+                                        <button class="greenBtn shadow-md shadow-green-700 p-4 rounded-full px-10 font-bold text-md tracking-wide my-5">
+                                            Upgrade to this Package
+                                        </button>
+                                    </a>
+                                    
+                                </div>
+                                <script>
+                                     (user.package == "starter" || user.package == "special" || user.package == "premium" || user.package == "pro") && document.querySelector('.litePackage').classList.remove('hidden');
+                                </script>
+                            </div>
+                            <div class="hidden xlitePackage">
+                                <div class="border border-gray-800 rounded-md lightDark p-3 my-10 shadow-md shadow-gray-700 flex flex-col items-center justify-center gap-1">
+                                    <h1 class="ultra text-2xl md:text-4xl mt-4 text-green-500 tracking-wider"><b class="text-yellow-500">X</b>Lite Package</h1>
+                                    <p class="text-green-100">Get <b>NGN 10,000</b> as profit Every 24 Hour</p>
+                                    <div class="greenLine h-[2px] my-5 w-full" ></div>
+                                    <p class="text-3xl mb-10 ultra">NGN 100,000</p>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Daily Trading Profit: <b>5,000 Naira</b></p>
+                                    </div>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Daily Trading Profit: Every <b>24 Hour</b></p>
+                                    </div>
+                                    <div class="w-full p-5 flex gap-5 items-center justify-between">
+                                        <div class="greenDot"></div>
+                                        <p class="flex-1 font-semibold text-lg">Daily Trading: Enabled</p>
+                                    </div>
+                                    <a href="https://api.whatsapp.com/send?phone=+2349134534917&text=Hello%20NairaCity%20Admin%2C%20I%20am%20ready%20to%20upgrade%20my%20nairacity%20investment%20plan%20to%20Xlite%20package">
+                                        <button class="greenBtn shadow-md shadow-green-700 p-4 rounded-full px-10 font-bold text-md tracking-wide my-5">
+                                            Upgrade to this Package
+                                        </button>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            <script>
+                                (user.package == "starter" || user.package == "special" || user.package == "premium" || user.package == "pro" || user.package == "lite") && document.querySelector('.xlitePackage').classList.remove('hidden');
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer -->
+                <footer class="flex items-center justify-between w-full bg-black bg-opacity-30 p-7">
+                    <p class="text-gray-200 text-sm">2022 &copy NairaCity</p>
+                    <p class="text-gray-200 text-sm">Designed & Developed by NairaCity Technologies Ltd</p>
+                </footer>
+            </section>
+        </div>
+    </html>
