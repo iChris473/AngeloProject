@@ -456,7 +456,7 @@ exports.getReferredUsers = async (req, res) => {
 
 exports.generateCoupon = async (req, res) => {
 
-    const code = crypto.randomBytes(20).toString('hex')
+    const code = crypto.randomBytes(5).toString('hex')
 
     try {
         
