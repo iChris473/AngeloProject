@@ -44,29 +44,29 @@
                                                             switch (newUser.package) {
 
                                                             case "special":
-                                                                mineTotal.innerHTML = ( (newUser.lastMinedAmout - 500 ) / 500 )?.toLocaleString()
+                                                                mineTotal.innerHTML = Math.ceil( (newUser.lastMinedAmout - 500 ) / 500 )?.toLocaleString()
                                                                 break;
 
                                                             case "premium":
-                                                                mineTotal.innerHTML = ( (newUser.lastMinedAmout - 1000 ) / 1000 )?.toLocaleString()
+                                                                mineTotal.innerHTML = Math.ceil( (newUser.lastMinedAmout - 1000 ) / 1000 )?.toLocaleString()
                                                                 break;
 
                                                             case "pro":
-                                                                mineTotal.innerHTML = ( (newUser.lastMinedAmout - 2000 ) / 2000 )?.toLocaleString()
+                                                                mineTotal.innerHTML = Math.ceil( (newUser.lastMinedAmout - 2000 ) / 2000 )?.toLocaleString()
                                                                 break;
 
                                                             case "lite":{
-                                                                mineTotal.innerHTML = ( (newUser.lastMinedAmout - 5000 ) / 5000 )?.toLocaleString()
+                                                                mineTotal.innerHTML = Math.ceil( (newUser.lastMinedAmout - 5000 ) / 5000 )?.toLocaleString()
                                                             }
                                                                 break;
 
                                                             case "xlite":
                                                                 console.log(newUser.lastMinedAmout)
-                                                                mineTotal.innerHTML = ( (newUser.lastMinedAmout - 10000 ) / 10000 )?.toLocaleString()
+                                                                mineTotal.innerHTML = Math.ceil( (newUser.lastMinedAmout - 10000 ) / 10000 )?.toLocaleString()
                                                                 break;
 
                                                             default:
-                                                                mineTotal.innerHTML = ( (newUser.lastMinedAmout - 200 ) / 200 )?.toLocaleString()
+                                                                mineTotal.innerHTML = Math.ceil( (newUser.lastMinedAmout - 200 ) / 200 )?.toLocaleString()
                                                                 break;
                                                             }
 
@@ -75,29 +75,29 @@
                                                                 switch (newUser.package) {
 
                                                                     case "special":
-                                                                        mineTotal.innerHTML = ( (newUser.lastMinedAmout ) / 500 )?.toLocaleString()
+                                                                        mineTotal.innerHTML = Math.ceil( (newUser.lastMinedAmout ) / 500 )?.toLocaleString()
                                                                         break;
 
                                                                     case "premium":
-                                                                        mineTotal.innerHTML = ( (newUser.lastMinedAmout ) / 1000 )?.toLocaleString()
+                                                                        mineTotal.innerHTML = Math.ceil( (newUser.lastMinedAmout ) / 1000 )?.toLocaleString()
                                                                         break;
 
                                                                     case "pro":
-                                                                        mineTotal.innerHTML = ( (newUser.lastMinedAmout ) / 2000 )?.toLocaleString()
+                                                                        mineTotal.innerHTML = Math.ceil( (newUser.lastMinedAmout ) / 2000 )?.toLocaleString()
                                                                         break;
 
                                                                     case "lite":{
-                                                                        mineTotal.innerHTML = ( (newUser.lastMinedAmout ) / 5000 )?.toLocaleString()
+                                                                        mineTotal.innerHTML = Math.ceil( (newUser.lastMinedAmout ) / 5000 )?.toLocaleString()
                                                                     }
                                                                         break;
 
                                                                     case "xlite":
                                                                         console.log(newUser.lastMinedAmout)
-                                                                        mineTotal.innerHTML = ( (newUser.lastMinedAmout ) / 10000 )?.toLocaleString()
+                                                                        mineTotal.innerHTML = Math.ceil( (newUser.lastMinedAmout ) / 10000 )?.toLocaleString()
                                                                         break;
 
                                                                     default:
-                                                                        mineTotal.innerHTML = ( (newUser.lastMinedAmout ) / 200 )?.toLocaleString()
+                                                                        mineTotal.innerHTML = Math.ceil( (newUser.lastMinedAmout ) / 200 )?.toLocaleString()
                                                                         break;
                                                                     }
 
@@ -120,29 +120,29 @@
                                                        switch (newUser.package) {
 
                                                        case "special":
-                                                           mineBalance.innerHTML = ( (newUser.lastMinedAmout - 500 ))?.toLocaleString()
+                                                           mineBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 500 ))?.toLocaleString()
                                                            break;
 
                                                        case "premium":
-                                                           mineBalance.innerHTML = ( (newUser.lastMinedAmout - 1000 ))?.toLocaleString()
+                                                           mineBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 1000 ))?.toLocaleString()
                                                            break;
 
                                                        case "pro":
-                                                           mineBalance.innerHTML = ( (newUser.lastMinedAmout - 2000 ))?.toLocaleString()
+                                                           mineBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 2000 ))?.toLocaleString()
                                                            break;
 
                                                        case "lite":{
-                                                           mineBalance.innerHTML = ( (newUser.lastMinedAmout - 5000 ))?.toLocaleString()
+                                                           mineBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 5000 ))?.toLocaleString()
                                                        }
                                                            break;
 
                                                        case "xlite":
                                                            console.log(newUser.lastMinedAmout)
-                                                           mineBalance.innerHTML = ( (newUser.lastMinedAmout - 10000 ))?.toLocaleString()
+                                                           mineBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 10000 ))?.toLocaleString()
                                                            break;
 
                                                        default:
-                                                           mineBalance.innerHTML = ( (newUser.lastMinedAmout - 200 )  )?.toLocaleString()
+                                                           mineBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 200 )  )?.toLocaleString()
                                                            break;
                                                        }
 
@@ -292,29 +292,29 @@
                                                     switch (newUser.package) {
 
                                                     case "special":
-                                                        boldMineBalance.innerHTML = ( (newUser.lastMinedAmout - 500 ))?.toLocaleString()
+                                                        boldMineBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 500 ))?.toLocaleString()
                                                         break;
 
                                                     case "premium":
-                                                        boldMineBalance.innerHTML = ( (newUser.lastMinedAmout - 1000 ))?.toLocaleString()
+                                                        boldMineBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 1000 ))?.toLocaleString()
                                                         break;
 
                                                     case "pro":
-                                                        boldMineBalance.innerHTML = ( (newUser.lastMinedAmout - 2000 ))?.toLocaleString()
+                                                        boldMineBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 2000 ))?.toLocaleString()
                                                         break;
 
                                                     case "lite":{
-                                                        boldMineBalance.innerHTML = ( (newUser.lastMinedAmout - 5000 ))?.toLocaleString()
+                                                        boldMineBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 5000 ))?.toLocaleString()
                                                     }
                                                         break;
 
                                                     case "xlite":
                                                         console.log(newUser.lastMinedAmout)
-                                                        boldMineBalance.innerHTML = ( (newUser.lastMinedAmout - 10000 ))?.toLocaleString()
+                                                        boldMineBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 10000 ))?.toLocaleString()
                                                         break;
 
                                                     default:
-                                                        boldMineBalance.innerHTML = ( (newUser.lastMinedAmout - 200 )  )?.toLocaleString()
+                                                        boldMineBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 200 )  )?.toLocaleString()
                                                         break;
                                                     }
 
@@ -408,29 +408,29 @@
                                                             switch (newUser.package) {
 
                                                             case "special":
-                                                                tradingBalance.innerHTML = ( (newUser.lastMinedAmout - 500 ))?.toLocaleString()
+                                                                tradingBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 500 ))?.toLocaleString()
                                                                 break;
 
                                                             case "premium":
-                                                                tradingBalance.innerHTML = ( (newUser.lastMinedAmout - 1000 ))?.toLocaleString()
+                                                                tradingBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 1000 ))?.toLocaleString()
                                                                 break;
 
                                                             case "pro":
-                                                                tradingBalance.innerHTML = ( (newUser.lastMinedAmout - 2000 ))?.toLocaleString()
+                                                                tradingBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 2000 ))?.toLocaleString()
                                                                 break;
 
                                                             case "lite":{
-                                                                tradingBalance.innerHTML = ( (newUser.lastMinedAmout - 5000 ))?.toLocaleString()
+                                                                tradingBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 5000 ))?.toLocaleString()
                                                             }
                                                                 break;
 
                                                             case "xlite":
                                                                 console.log(newUser.lastMinedAmout)
-                                                                tradingBalance.innerHTML = ( (newUser.lastMinedAmout - 10000 ))?.toLocaleString()
+                                                                tradingBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 10000 ))?.toLocaleString()
                                                                 break;
 
                                                             default:
-                                                                tradingBalance.innerHTML = ( (newUser.lastMinedAmout - 200 )  )?.toLocaleString()
+                                                                tradingBalance.innerHTML = Math.ceil( (newUser.lastMinedAmout - 200 )  )?.toLocaleString()
                                                                 break;
                                                             }
 

@@ -46,7 +46,7 @@
 
                                             verifyButton.innerHTML = "Upgrading..."
 
-                                            fetch(`${url}/user/verify`, {
+                                            fetch(`${url}/user/upgrade`, {
                                                 method: "PUT",
                                                 body: JSON.stringify(userInfo),
                                                 headers: {

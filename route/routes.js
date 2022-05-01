@@ -27,6 +27,8 @@ router.post("/user/forgotpass", userController.forgotPassword)
 router.put("/user/resetpassword", userController.resetPassword)
 // Verify Account
 router.put("/user/verify", userController.verifyAccount)
+// Upgrade Account
+router.put("/user/upgrade", userController.upgradeAccount)
 // Get all Referrals
 router.get("/user/referrals", userController.getReferredUsers)
 // Get Mined Total

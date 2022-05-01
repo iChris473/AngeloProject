@@ -295,6 +295,37 @@ exports.verifyAccount = async (req, res) => {
     }
 }
 
+exports.upgradeAccount = async (req, res) => {
+
+    const {coupon, email} = req.body
+
+    try {
+        
+        const user = await User.findOne({email})
+
+        const verifyCoupon = await Coupon.findOne({code: coupon})
+
+        if(!verifyCoupon) return res.status(401).json("Provide a valid coupon code")
+        
+        await User.updateOne(
+            {_id:user._id},
+            {
+                $set: {
+                    package: verifyCoupon.type,
+                    lastMinedDate: new Date().getTime() * (1000 * 60 * 60 * 24)
+                }
+            }
+        )
+
+        await Coupon.deleteOne({code: coupon})
+
+        res.status(200).json("You have successfully upgraded your account")
+
+    } catch (error) {
+        res.status(400).json('An error occured while trying to upgrade your account')
+    }
+}
+
 exports.getReferredUsers = async (req, res) => { 
 
     try {
