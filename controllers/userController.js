@@ -324,7 +324,7 @@ exports.upgradeAccount = async (req, res) => {
     
                 await Coupon.deleteOne({code: coupon})
 
-                res.status(200).json("You have successfully upgraded your account")
+                return res.status(200).json("You have successfully upgraded your account")
             }
     
             // #10K PACKAGE
@@ -344,7 +344,7 @@ exports.upgradeAccount = async (req, res) => {
     
                 await Coupon.deleteOne({code: coupon})
 
-                res.status(200).json("You have successfully upgraded your account")
+                return res.status(200).json("You have successfully upgraded your account")
     
             }
     
@@ -367,7 +367,7 @@ exports.upgradeAccount = async (req, res) => {
 
                 await Coupon.deleteOne({code: coupon})
 
-                res.status(200).json("You have successfully upgraded your account")
+                return res.status(200).json("You have successfully upgraded your account")
     
             }
     
@@ -390,7 +390,7 @@ exports.upgradeAccount = async (req, res) => {
 
                 await Coupon.deleteOne({code: coupon})
 
-                res.status(200).json("You have successfully upgraded your account")
+                return res.status(200).json("You have successfully upgraded your account")
     
             }
     
@@ -431,7 +431,7 @@ exports.upgradeAccount = async (req, res) => {
 
             await Coupon.deleteOne({code: coupon})
 
-        res.status(200).json("You have successfully upgraded your account")
+        return res.status(200).json("You have successfully upgraded your account")
 
     } catch (error) {
         res.status(400).json('An error occured while trying to upgrade your account')
