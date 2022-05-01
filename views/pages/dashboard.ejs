@@ -39,7 +39,7 @@
 
                                                      const mineTotal = document.querySelector(".mineTotal");
 
-                                                        if( ((new Date().getTime() - newUser.lastMinedDate) / (1000 * 60 * 60 * 24) ) < 1  ){
+                                                        if( (Math.abs(new Date().getTime() - newUser.lastMinedDate) / (1000 * 60 * 60 * 24) ) < 1  ){
 
                                                             switch (newUser.package) {
 
@@ -115,7 +115,7 @@
 
                                                 const mineBalance = document.querySelector(".mineBalance");
 
-                                                   if( ((new Date().getTime() - newUser.lastMinedDate) / (1000 * 60 * 60 * 24) ) < 1  ){
+                                                   if( (Math.abs(new Date().getTime() - newUser.lastMinedDate) / (1000 * 60 * 60 * 24) ) < 1  ){
 
                                                        switch (newUser.package) {
 
@@ -287,7 +287,7 @@
                                         <p class="bg-gray-400 py-3 px-20 rounded-md text-black ultra text-2xl text-center">NGN <span class="boldMineBal">
                                             <script>
                                                 const boldMineBalance = document.querySelector(".boldMineBal")
-                                                if( ((new Date().getTime() - newUser.lastMinedDate) / (1000 * 60 * 60 * 24) ) < 1  ){
+                                                if( (Math.abs(new Date().getTime() - newUser.lastMinedDate) / (1000 * 60 * 60 * 24) ) < 1  ){
 
                                                     switch (newUser.package) {
 
@@ -347,7 +347,7 @@
                                         newUser.verified && (buyCoupon.classList.add("hidden"))
                                         newUser.verified && (oops.classList.add("hidden"))
                                                                                 
-                                        if( ( ((new Date().getTime() - newUser.lastMinedDate) / (1000 * 60 * 60 * 24))  < 1 ) && newUser.verified ){
+                                        if( ( (Math.abs(new Date().getTime() - newUser.lastMinedDate) / (1000 * 60 * 60 * 24))  < 1 ) && newUser.verified ){
 
                                         power.classList.add("hidden")
                                         minemineParent.classList.remove("hidden")
@@ -403,7 +403,7 @@
 
                                                         const tradingBalance = document.querySelector(".xrefBalance")
 
-                                                        if( ((new Date().getTime() - newUser.lastMinedDate) / (1000 * 60 * 60 * 24) ) < 1  ){
+                                                        if( (Math.abs(new Date().getTime() - newUser.lastMinedDate) / (1000 * 60 * 60 * 24) ) < 1  ){
 
                                                             switch (newUser.package) {
 
