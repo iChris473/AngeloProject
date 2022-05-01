@@ -319,7 +319,6 @@ exports.upgradeAccount = async (req, res) => {
             }
         )
 
-        await Coupon.deleteOne({code: coupon})
         
             // #5K PACKAGE
             if(verifyCoupon.type.toLowerCase() == "special"){
