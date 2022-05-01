@@ -307,18 +307,6 @@ exports.upgradeAccount = async (req, res) => {
 
         if(!verifyCoupon) return res.status(401).json("Provide a valid coupon code")
 
-        // Update users Package type in the database
-        await User.updateOne(
-            {_id:user._id},
-            {
-                $set: {
-                    verified: true,
-                    verifiedDate: new Date(),
-                    package: verifyCoupon.type
-                }
-            }
-        )
-
         
             // #5K PACKAGE
             if(verifyCoupon.type.toLowerCase() == "special"){
@@ -328,7 +316,8 @@ exports.upgradeAccount = async (req, res) => {
                     {
                         $set: {
                             lastMinedAmout: ( user.lastMinedAmout + 500 ),
-                            lastMinedDate: new Date().getTime()
+                            lastMinedDate: new Date().getTime(),
+                            package: verifyCoupon.type
                         }
                     }
                 )    
@@ -347,7 +336,8 @@ exports.upgradeAccount = async (req, res) => {
                     {
                         $set: {
                             lastMinedAmout: ( user.lastMinedAmout + 1000 ),
-                            lastMinedDate: new Date().getTime()
+                            lastMinedDate: new Date().getTime(),
+                            package: verifyCoupon.type
                         } 
                     }
                 )    
@@ -368,7 +358,8 @@ exports.upgradeAccount = async (req, res) => {
                     {
                         $set: {
                             lastMinedAmout: ( user.lastMinedAmout + 2000 ),
-                            lastMinedDate: new Date().getTime()
+                            lastMinedDate: new Date().getTime(),
+                            package: verifyCoupon.type
                         } 
                     }
                 )    
@@ -390,7 +381,8 @@ exports.upgradeAccount = async (req, res) => {
                     {
                         $set: {
                             lastMinedAmout: ( user.lastMinedAmout + 5000 ),
-                            lastMinedDate: new Date().getTime()
+                            lastMinedDate: new Date().getTime(),
+                            package: verifyCoupon.type
                         } 
                     }
                 )    
@@ -412,7 +404,8 @@ exports.upgradeAccount = async (req, res) => {
                     {
                         $set: {
                             lastMinedAmout: ( user.lastMinedAmout + 10000 ),
-                            lastMinedDate: new Date().getTime()
+                            lastMinedDate: new Date().getTime(),
+                            package: verifyCoupon.type
                         } 
                     }
                 )    
@@ -430,7 +423,8 @@ exports.upgradeAccount = async (req, res) => {
                 {
                     $set: {
                         lastMinedAmout: ( user.lastMinedAmout + 200 ),
-                        lastMinedDate: new Date().getTime()
+                        lastMinedDate: new Date().getTime(),
+                        package: verifyCoupon.type
                     } 
                 }
             )    
