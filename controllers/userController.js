@@ -306,18 +306,137 @@ exports.upgradeAccount = async (req, res) => {
         const verifyCoupon = await Coupon.findOne({code: coupon})
 
         if(!verifyCoupon) return res.status(401).json("Provide a valid coupon code")
-        
+
+        // Update users Package type in the database
         await User.updateOne(
             {_id:user._id},
             {
                 $set: {
-                    package: verifyCoupon.type,
-                    lastMinedDate: new Date().getTime() * (1000 * 60 * 60 * 24)
+                    verified: true,
+                    verifiedDate: new Date(),
+                    package: verifyCoupon.type
                 }
             }
         )
 
         await Coupon.deleteOne({code: coupon})
+        
+            // #5K PACKAGE
+            if(verifyCoupon.type.toLowerCase() == "special"){
+
+                await User.updateOne(
+                    {_id:user._id},
+                    {
+                        $set: {
+                            lastMinedAmout: ( user.lastMinedAmout + 500 ),
+                            lastMinedDate: new Date().getTime()
+                        }
+                    }
+                )    
+    
+                await Coupon.deleteOne({code: coupon})
+
+                res.status(200).json("You have successfully upgraded your account")
+            }
+    
+            // #10K PACKAGE
+    
+            if(verifyCoupon.type.toLowerCase() == "premium"){
+    
+                await User.updateOne(
+                    {_id:user._id},
+                    {
+                        $set: {
+                            lastMinedAmout: ( user.lastMinedAmout + 1000 ),
+                            lastMinedDate: new Date().getTime()
+                        } 
+                    }
+                )    
+    
+                await Coupon.deleteOne({code: coupon})
+
+                res.status(200).json("You have successfully upgraded your account")
+    
+            }
+    
+    
+            // #20K PACKAGE
+    
+            if(verifyCoupon.type.toLowerCase() == "pro"){
+    
+                await User.updateOne(
+                    {_id:user._id},
+                    {
+                        $set: {
+                            lastMinedAmout: ( user.lastMinedAmout + 2000 ),
+                            lastMinedDate: new Date().getTime()
+                        } 
+                    }
+                )    
+    
+
+                await Coupon.deleteOne({code: coupon})
+
+                res.status(200).json("You have successfully upgraded your account")
+    
+            }
+    
+    
+            // #50K PACKAGE
+    
+            if(verifyCoupon.type.toLowerCase() == "lite"){
+    
+                await User.updateOne(
+                    {_id:user._id},
+                    {
+                        $set: {
+                            lastMinedAmout: ( user.lastMinedAmout + 5000 ),
+                            lastMinedDate: new Date().getTime()
+                        } 
+                    }
+                )    
+    
+
+                await Coupon.deleteOne({code: coupon})
+
+                res.status(200).json("You have successfully upgraded your account")
+    
+            }
+    
+    
+            // #100K PACKAGE
+    
+            if(verifyCoupon.type.toLowerCase() == "xlite"){
+    
+                await User.updateOne(
+                    {_id:user._id},
+                    {
+                        $set: {
+                            lastMinedAmout: ( user.lastMinedAmout + 10000 ),
+                            lastMinedDate: new Date().getTime()
+                        } 
+                    }
+                )    
+
+                await Coupon.deleteOne({code: coupon})
+    
+                return res.status(200).json("You have successfully upgraded your account")
+    
+            }
+    
+    
+            // #2K PACKAGE
+            await User.updateOne(
+                {_id:user._id},
+                {
+                    $set: {
+                        lastMinedAmout: ( user.lastMinedAmout + 200 ),
+                        lastMinedDate: new Date().getTime()
+                    } 
+                }
+            )    
+
+            await Coupon.deleteOne({code: coupon})
 
         res.status(200).json("You have successfully upgraded your account")
 
