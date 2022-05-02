@@ -478,7 +478,7 @@
                                             <p class="ultra text-2xl text-gray-400 amountWithdrawn">
                                                 <script>
                                                     document.querySelector(".amountWithdrawn")
-                                                    .innerHTML = newUser.amountWithdrawn                               
+                                                    .innerHTML = (newUser.amountWithdrawn + newUser.tradeWithdrawn)?.toLocaleString()
                                                </script>
                                             </p>
                                         </div>

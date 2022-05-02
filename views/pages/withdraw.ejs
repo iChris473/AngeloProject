@@ -54,7 +54,8 @@
             <script>
 
                 const refs = JSON.parse(localStorage.getItem('ref'));
-                const mine = JSON.parse(localStorage.getItem('mine'));
+
+                console.log(refs)
 
                 const withdrwBtn = document.querySelector('.withdrwBtn');
                 const referrBtn = document.querySelector('.referrBtn');
@@ -70,6 +71,8 @@
                 // "NGN " + ( (refs.length * 1000) - user.amountWithdrawn ).toLocaleString();                
                 const mineBalance = document.querySelector('.mineBalance')
 
+                let totalTradedBalance;
+
                 refBalance.innerHTML = "NGN " + ( (refs.verifiedReferred * 1000) - user.amountWithdrawn )?.toLocaleString();
 
                 if (((new Date().getTime() - user.lastMinedDate) / (1000 * 60 * 60 * 24)) < 1) {
@@ -78,32 +81,39 @@
 
                             case "special":
                                 mineBalance.innerHTML = "NGN " + (user.lastMinedAmout - 500)?.toLocaleString();
+                                totalTradedBalance = user.lastMinedAmout - 500;
                                 break;
 
                             case "premium":
                                 mineBalance.innerHTML = "NGN " + (user.lastMinedAmout - 1000)?.toLocaleString();
+                                totalTradedBalance = user.lastMinedAmout - 1000;
                                 break;
 
                             case "pro":
                                 mineBalance.innerHTML = "NGN " + (user.lastMinedAmout - 2000)?.toLocaleString();
+                                totalTradedBalance = user.lastMinedAmout - 2000;
                                 break;
 
                             case "lite": {
                                 mineBalance.innerHTML = "NGN " + (user.lastMinedAmout - 5000)?.toLocaleString();
+                                totalTradedBalance = user.lastMinedAmout - 5000;
                             }
                                 break;
 
                             case "xlite":
                                 mineBalance.innerHTML = "NGN " + (user.lastMinedAmout - 10000)?.toLocaleString();
+                                totalTradedBalance = user.lastMinedAmout - 10000;
                                 break;
 
                             default:
                                 mineBalance.innerHTML = "NGN " + (user.lastMinedAmout - 200)?.toLocaleString();
+                                totalTradedBalance = user.lastMinedAmout - 200;
                                 break;
                         }
 
                 } else {
                         mineBalance.innerHTML = "NGN " + (user.lastMinedAmout)?.toLocaleString();
+                        totalTradedBalance = user.lastMinedAmout;
                     }
 
                 
@@ -117,7 +127,8 @@
                     placeTradeWith.innerHTML = "Place withdrawal"
 
                 }
-
+                console.log(user.withTraded)
+                console.log(user.withdraw)
                 if(user.withdraw){
                     withdrwBtn.innerHTML = "PENDING...";
                     withdrwBtn.disabled = true;
@@ -137,7 +148,7 @@
                 const withdrawTraded = async () => {
 
                         const newUser = {
-                            withTraded: true
+                            withTraded: totalTradedBalance
                         }
 
                         fetch(`${url}/user/update/${user._id}`, {
@@ -180,6 +191,8 @@
                         const newUser = {
                             withdraw: true
                         }
+                        console.log(( (refs.verifiedReferred * 1000) - user.amountWithdrawn ))
+
 
                         fetch(`${url}/user/update/${user._id}`, {
                             method: "PUT",

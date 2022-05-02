@@ -31,10 +31,6 @@ const UserSchema = new mongoose.Schema({
     bankName: {type: String},
     accountType: {type: String},
     resetPasswordToken: String,
-    amountWithdrawn: {
-        type: Number,
-        default: 0
-    },
     validated: {
         type: Boolean,
         default: false
@@ -47,16 +43,24 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    withdraw:{
+        type: Number,
+        default: 0
+    },
     withTraded:{
-        type: Boolean,
-        default: false
+        type: Number,
+        default: 0
     },
     package:{
         type: String,
     },
-    withdraw:{
-        type: Boolean,
-        default: false
+    tradeWithdrawn: {
+        type: Number,
+        default: 0
+    },
+    amountWithdrawn: {
+        type: Number,
+        default: 0
     },
     lastMinedDate: {
         type: Number
