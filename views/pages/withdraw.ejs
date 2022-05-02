@@ -10,6 +10,35 @@
 
                     <!-- Main Section -->
                     <section class="col-span-4 md:col-span-3 mt-16">
+                        <script>
+
+                                async function getReferralls(){
+
+                                fetch(`${url}/user/referrals?username=${user.username}`, {
+                                    method: "GET",
+                                    headers: {
+                                    "Content-type": "application/json; charset=UTF-8",
+                                        token: `Bearer ${user?.token}`
+                                    },
+                                })
+                                    .then(function (response) {
+                                    if (response.ok) {
+                                        return response.json();
+                                    }
+                                    return Promise.reject(response);
+                                    })
+                                    .then(function (data) {
+                                        window.localStorage.setItem("ref", JSON.stringify(data))
+                                    
+                                    })
+                                    .catch(function (err) {
+                                    console.log(err)
+                                    })
+                            }
+                            
+                            getReferralls()
+                            
+                        </script>
                         <div class="mt-10 m-5 min-h-screen">
                             <h1 class="ultra text-4xl text-green-500 text-center mt-12">Withdraw Funds</h1>
                             <p class="text-green-200 text-center mt-2 italic max-w-[800px] mx-auto"><b>NOTICE:</b> You can not withdraw from your trading balance until you have at least NGN 2,000 in your trading balance, However you can withdraw from your referral even if you have only NGN 1,000 and you should get your referral bonus at least 6 hours after you place withdrawal</p>
@@ -54,8 +83,6 @@
             <script>
 
                 const refs = JSON.parse(localStorage.getItem('ref'));
-
-                console.log(refs)
 
                 const withdrwBtn = document.querySelector('.withdrwBtn');
                 const referrBtn = document.querySelector('.referrBtn');
@@ -127,8 +154,7 @@
                     placeTradeWith.innerHTML = "Place withdrawal"
 
                 }
-                console.log(user.withTraded)
-                console.log(user.withdraw)
+
                 if(user.withdraw){
                     withdrwBtn.innerHTML = "PENDING...";
                     withdrwBtn.disabled = true;
@@ -189,10 +215,8 @@
                 const placeWithdraw = async () => {
 
                         const newUser = {
-                            withdraw: true
+                            withdraw: (refs.verifiedReferred * 1000) - user.amountWithdrawn
                         }
-                        console.log(( (refs.verifiedReferred * 1000) - user.amountWithdrawn ))
-
 
                         fetch(`${url}/user/update/${user._id}`, {
                             method: "PUT",

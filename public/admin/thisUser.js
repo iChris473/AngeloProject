@@ -12,11 +12,11 @@ document.querySelector(".accName").innerHTML = currentUser.accountName || "N/A"
 document.querySelector(".accNumber").innerHTML = currentUser.accountNumber || "N/A"
 document.querySelector(".phone").innerHTML = currentUser.number || "N/A"
 document.querySelector(".email").innerHTML = currentUser.email || "N/A"
-document.querySelector(".withdraw").innerHTML = currentUser.withdraw || "N/A"
 document.querySelector(".package").innerHTML = currentUser.package || "N/A"
 document.querySelector(".amountWith").innerHTML = currentUser.amountWithdrawn
 document.querySelector(".tradedWith").innerHTML = currentUser.tradeWithdrawn
-document.querySelector(".tradedWith").innerHTML = currentUser.refBalance
+document.querySelector(".reqRefWith").innerHTML = currentUser.withdraw
+document.querySelector(".reqTradeWith").innerHTML = currentUser.withTraded
 
 
 // OTHER QUERY SELECTORS
