@@ -11,8 +11,8 @@
                     <!-- Main Section -->
                     <section class="col-span-4 md:col-span-3 mt-16">
                         <div class="mt-10 m-5 min-h-screen">
-                            <h1 class="ultra text-4xl text-green-500 text-center mt-12">Withdraw Fundz</h1>
-                            <p class="text-green-200 text-center mt-2 italic max-w-[800px] mx-auto"><b>NOTICE:</b> You can not withdraw from your mining balance until after one month of registration, and you should get your Referral bonus at least 6 hours after you place withdrawal</p>
+                            <h1 class="ultra text-4xl text-green-500 text-center mt-12">Withdraw Funds</h1>
+                            <p class="text-green-200 text-center mt-2 italic max-w-[800px] mx-auto"><b>NOTICE:</b> You can not withdraw from your trading balance until you have at least NGN 2,000 in your trading balance, However you can withdraw from your referral even if you have only NGN 1,000 and you should get your referral bonus at least 6 hours after you place withdrawal</p>
                             <div class="mb-5">
                                 <div class="flex items-center justify-center flex-col my-10 gap-5">
                                     <div class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 w-full max-w-[800px] mx-auto">
@@ -23,18 +23,19 @@
                                             </div>
                                             <div class="purpleGrad w-10 h-10 opacity-50"></div>
                                         </div>
-                                        <p class="withdrwBtn greenBtn shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-lg tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse hidden"></p>
-                                        <p class="referrBtn greenBtn shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-sm tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse hidden">Start Referring your friends and earn #1,000 on each Referral</p>
+                                        <button class="withdrwBtn greenBtn shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-lg tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse hidden"></button>
+                                        <p class="referrBtn greenBtn shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-sm tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse hidden">Start Referring your friends and earn #1,000 on each referral</p>
                                     </div>
                                     <div class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 w-full max-w-[800px] mx-auto">
                                         <div class="flex items-center justify-between gap-10">
                                             <div class="space-y-2">
-                                                <p class="text-gray-200 font-bold text-xl">Mining Balance </p>
+                                                <p class="text-gray-200 font-bold text-xl">Trading Balance </p>
                                                 <p class="ultra text-2xl text-gray-400 mineBalance"></p>
                                             </div>
                                             <div class="purpleGrad w-10 h-10 opacity-50"></div>
                                         </div>
-                                        <p class="bg-gray-800 shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-lg tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse">You can only withdraw after 2 weeks of deposit</p>
+                                        <p class="bg-gray-800 shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-sm tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse tradeWithdraw">You can only withdraw your trading balance if you have at least NGN 2,000</p>
+                                        <button class="hidden bg-gray-800 shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-lg tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse placeTradeWith">Place withdrawal</button>
                                     </div>
                                 </div>
                             </div>
@@ -57,6 +58,13 @@
 
                 const withdrwBtn = document.querySelector('.withdrwBtn');
                 const referrBtn = document.querySelector('.referrBtn');
+                const tradeWithdraw = document.querySelector('.tradeWithdraw');
+                const placeTradeWith = document.querySelector('.placeTradeWith');
+
+                if(user.lastMinedAmout >= 2000){
+                    tradeWithdraw.classList.add('hidden'); 
+                    placeTradeWith.classList.remove('hidden');
+                } 
 
                 const refBalance = document.querySelector('.refBalance')
                 // "NGN " + ( (refs.length * 1000) - user.amountWithdrawn ).toLocaleString();                
@@ -102,8 +110,17 @@
                 
 
 
+                if(user.withTraded){
+                    placeTradeWith.innerHTML = "PENDING...";
+                    placeTradeWith.disabled = true;
+                } else {
+                    placeTradeWith.innerHTML = "Place withdrawal"
+
+                }
+
                 if(user.withdraw){
-                    withdrwBtn.innerHTML = "PENDING..."
+                    withdrwBtn.innerHTML = "PENDING...";
+                    withdrwBtn.disabled = true;
                 } else {
                     withdrwBtn.innerHTML = "Place withdrawal"
 
@@ -116,6 +133,47 @@
                     referrBtn.classList.add("hidden")
                     withdrwBtn.classList.remove("hidden")
                 }
+
+                const withdrawTraded = async () => {
+
+                        const newUser = {
+                            withTraded: true
+                        }
+
+                        fetch(`${url}/user/update/${user._id}`, {
+                            method: "PUT",
+                            body: JSON.stringify(newUser),
+                            headers: {
+                                "Content-type": "application/json; charset=UTF-8",
+                                token: `Bearer ${user?.token}`
+                            },
+                        })
+                            .then(function (response) {
+                                if (response.ok) {
+                                    return response.json();
+                                } else {
+                                    return response.text().then((text) => {
+                                        return Promise.reject()
+                                    });
+                                }
+                                return Promise.reject(response);
+                            })
+                            .then(function (data) {
+
+                                console.log(data);
+                                const  { withTraded, ...others } = user
+                                const updatedUser = {...others, ...newUser}
+                                localStorage.setItem("user", JSON.stringify(updatedUser))
+
+                                window.location.reload()
+
+                            })
+                            .catch(function (error) {
+                                console.log(error)
+                            })
+                    }
+                    
+                placeTradeWith.addEventListener("click", withdrawTraded)  
 
                 const placeWithdraw = async () => {
 

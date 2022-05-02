@@ -47,8 +47,9 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    verifiedDate:{
-        type: Date,
+    withTraded:{
+        type: Boolean,
+        default: false
     },
     package:{
         type: String,
