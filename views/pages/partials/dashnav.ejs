@@ -5,6 +5,10 @@
         if(!user && (user.length != 0)){
             window.location.href = '/register';
         }
+        
+        if(window.location.href.includes('https://nairacity.herokuapp.com')){
+            window.location.href = "https://www.naircity.com"
+        }
 
     </script>
     <a href="/"> <img src="/public/img/newLogo.png" class="h-7 md:h-10 mt-2" alt=""></a>
