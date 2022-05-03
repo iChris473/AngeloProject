@@ -124,7 +124,7 @@ exports.loginUser = async  (req, res) => {
         
 
     } catch (err) {
-        return res.status(404).json(err)
+        return res.status(404).json("An error occured")
     }
 }
 
