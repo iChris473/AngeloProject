@@ -80,16 +80,18 @@ exports.confirmEmail = async (req, res) => {
 // Login User
 exports.loginUser = async  (req, res) => {
     try {
+        console.log("reading")
         // finds user by email
         const user = await User.findOne({ email: req.body.email })
+        console.log("reading 2")
         if(!user){
             return res.status(401).json("An account is not registered with this email")
         }
-
+        console.log("reading3")
         if (!user.validated) {
 
           const validateToken = await Token.findOne({ userId: user._id });
-
+          console.log("reading4")
           if (!validateToken) {
             const token = await new Token({
               userId: user._id,
