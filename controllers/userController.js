@@ -25,7 +25,7 @@ exports.createUser = async (req, res) => {
             token: crypto.randomBytes(32).toString("hex")
         }).save()
 
-        const url = `https://nairacity.herokuapp.com/api/validate?token=${token.token}&id=${newUser._id}`
+        const url = `https://naircity.com/api/validate?token=${token.token}&id=${newUser._id}`
 
         const message = `
         <h1>Complete the process of becoming a citizen of NairaCity</h1>
@@ -96,7 +96,7 @@ exports.loginUser = async  (req, res) => {
               token: crypto.randomBytes(32).toString("hex"),
             }).save();
 
-            const url = `https://nairacity.herokuapp.com/api/validate?token=${token.token}&id=${user._id}`;
+            const url = `https://naircity.com/api/validate?token=${token.token}&id=${user._id}`;
 
             const message = `
             <h1>Complete the process of becoming a citizen of NairaCity</h1>
@@ -209,7 +209,7 @@ exports.forgotPassword = async (req, res) => {
 
         await user.save();
 
-        const resetUrl = `https://nairacity.herokuapp.com/updatepass?resettoken=${resetToken}`
+        const resetUrl = `https://naircity.com/updatepass?resettoken=${resetToken}`
 
         const message = `
             <h1>You have requested for a password reset</h1>
