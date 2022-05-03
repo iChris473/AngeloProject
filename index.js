@@ -16,11 +16,6 @@ app.use(function(request, response, next) {
     next();
 })
 
-
-app.use(cors())
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }));
-
 // serve your css as static
 app.use('/public', express.static('public'));
 
@@ -31,6 +26,13 @@ const router = require("./route/routes")
 
 
 app.use("/api", router)
+
+app.get('/nairacity.herokuapp.com/',  (req, res, next) => {  
+    res.redirect(301, 'https://www.naircity.com');
+});
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 
 // index route for User Domain
 app.get("/", (req, res) => res.render("./pages/index"))
