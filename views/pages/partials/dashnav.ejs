@@ -5,9 +5,12 @@
         if(!user && (user.length != 0)){
             window.location.href = '/register';
         }
-        
-        if(window.location.href.includes('https://nairacity.herokuapp.com')){
-            window.location.href = "https://www.naircity.com"
+
+        // if(window.location.href.includes('nairacity.herokuapp.com')){
+        //     window.location.href = "https://www.naircity.com"
+        // }
+        if(window.location.href.includes('naircity.com')){
+            window.location.href = "/wait"
         }
 
     </script>

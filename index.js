@@ -5,16 +5,16 @@ const app = express()
 require("./models/db");
 const cors = require("cors")
 
-app.enable('trust proxy')
+// app.enable('trust proxy')
 
-app.use(function(request, response, next) {
+// app.use(function(request, response, next) {
 
-    if (process.env.NODE_ENV != 'development' && !request.secure) {
-       return response.redirect("https://" + request.headers.host + request.url);
-    }
+//     if (process.env.NODE_ENV != 'development' && !request.secure) {
+//        return response.redirect("https://" + request.headers.host + request.url);
+//     }
 
-    next();
-})
+//     next();
+// })
 
 // serve your css as static
 app.use('/public', express.static('public'));
@@ -77,6 +77,9 @@ app.get("/updatepass", (req, res) => res.render("./pages/updatepass"))
 
 // Terms and Service for User Domain
 app.get("/terms", (req, res) => res.render("./pages/terms"))
+
+// Wait for User Domain
+app.get("/wait", (req, res) => res.render("./pages/wait"))
 
 
 // ADMIN ROUTES
