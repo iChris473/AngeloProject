@@ -1,10 +1,10 @@
 
 
-const logout= document.querySelector(".logout")
-logout.addEventListener("click", () => {
-    localStorage.setItem("user", null)
-    window.location.href = "/login"
-})
+// const logout= document.querySelector(".logout")
+// logout.addEventListener("click", () => {
+//     localStorage.setItem("user", null)
+//     window.location.href = "/login"
+// })
     const sidebar = document.querySelector(".sidebar")
     const menu = document.querySelector(".menu")
     const cancel = document.querySelector(".cancel")

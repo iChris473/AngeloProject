@@ -41,7 +41,7 @@
                         </script>
                         <div class="mt-10 m-5 min-h-screen">
                             <h1 class="ultra text-4xl text-green-500 text-center mt-12">Withdraw Funds</h1>
-                            <p class="text-green-200 text-center mt-2 italic max-w-[800px] mx-auto"><b>NOTICE:</b> You can not withdraw from your trading balance until you have at least NGN 2,000 in your trading balance, However you can withdraw from your referral even if you have only NGN 1,000 and you should get your referral bonus at least 6 hours after you place withdrawal</p>
+                            <p class="text-green-200 text-center mt-2 italic max-w-[800px] mx-auto"><b>NOTICE:</b> You can not withdraw from your trading balance until one month after registration However you can withdraw from your referral even if you have only NGN 1,000 and you should get your referral bonus at least 6 hours after you place withdrawal</p>
                             <div class="mb-5">
                                 <div class="flex items-center justify-center flex-col my-10 gap-5">
                                     <div class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 w-full max-w-[800px] mx-auto">
@@ -63,7 +63,7 @@
                                             </div>
                                             <div class="purpleGrad w-10 h-10 opacity-50"></div>
                                         </div>
-                                        <p class="bg-gray-800 shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-sm tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse tradeWithdraw">You can only withdraw your trading balance if you have at least NGN 2,000</p>
+                                        <p class="bg-gray-800 shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-sm tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse tradeWithdraw">You can only withdraw your trading balance after one month of registration</p>
                                         <button class="hidden bg-gray-800 shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-lg tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse placeTradeWith">Place withdrawal</button>
                                     </div>
                                 </div>
@@ -89,10 +89,10 @@
                 const tradeWithdraw = document.querySelector('.tradeWithdraw');
                 const placeTradeWith = document.querySelector('.placeTradeWith');
 
-                if(user.lastMinedAmout >= 2000){
-                    tradeWithdraw.classList.add('hidden'); 
-                    placeTradeWith.classList.remove('hidden');
-                } 
+                // if(user.lastMinedAmout >= 2000){
+                //     tradeWithdraw.classList.add('hidden'); 
+                //     placeTradeWith.classList.remove('hidden');
+                // } 
 
                 const refBalance = document.querySelector('.refBalance')
                 // "NGN " + ( (refs.length * 1000) - user.amountWithdrawn ).toLocaleString();                

@@ -158,7 +158,7 @@
                                     </div>
                                     <div class="w-full p-5 flex gap-5 items-center justify-between">
                                         <div class="greenDot"></div>
-                                        <p class="flex-1 font-semibold text-lg">Referall Balance: 
+                                        <p class="flex-1 font-semibold text-lg">Referrals Balance: 
                                             <b class="refBalance">
                                                 <script>
                                                     document.querySelector(".refBalance")
@@ -170,7 +170,7 @@
                                     </div>
                                     <div class="w-full p-5 flex gap-5 items-center justify-between">
                                         <div class="greenDot"></div>
-                                        <p class="flex-1 font-semibold text-lg">Total Verified Referalls: 
+                                        <p class="flex-1 font-semibold text-lg">Total Verified Referrals 
                                             <b class="totalRef">
                                                 <script>
                                                     document.querySelector(".totalRef").innerHTML = allRefs.verifiedReferred                               
@@ -480,6 +480,8 @@
                                                 <script>
                                                     document.querySelector(".amountWithdrawn")
                                                     .innerHTML = (newUser.amountWithdrawn + newUser.tradeWithdrawn)?.toLocaleString()
+
+                                                    console.log(newUser)
                                                </script>
                                             </p>
                                         </div>
@@ -489,7 +491,7 @@
                                 <div class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 flex flex-col items-center justify-between gap-10 w-full max-w-[700px] mx-auto">
                                     <p class="text-gray-200 font-bold text-xl">Referral Link</p>
                                     <p class="text-red-400 mt-16 font-semibold text-lg hiddenRef">Your Referall link will appear when you verify your account</p>
-                                    <p class="text-sm text-gray-400 rounded-md border border-green-600 p-2 w-full text-center refLink hidden refUsername">
+                                    <p class="text-sm text-gray-400 rounded-md border border-green-600 p-2 w-full text-center refLink hidden refUsername" style="overflow-wrap:break-word;">
                                         <script>
                                             document.querySelector(".refUsername")
                                             .innerHTML = "https://www.naircity.com/register?ref=" + newUser.username                              
