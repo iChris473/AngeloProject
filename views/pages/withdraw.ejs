@@ -218,6 +218,11 @@
 
                 const placeWithdraw = async () => {
 
+                    if(!user.accountNumber){
+                        window.location.href = "/account"
+                        return;
+                    }
+
                         const newUser = {
                             withdraw: (refs.verifiedReferred * 1000) - user.amountWithdrawn
                         }

@@ -28,7 +28,7 @@ async function getAllusers(){
             tableRow.innerHTML =
             `
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-              ${user.name}
+              ${user.username}
       </th>
       <td class="px-6 py-4">
           ${user.email}
