@@ -79,7 +79,7 @@ app.get("/updatepass", (req, res) => res.render("./pages/updatepass"))
 app.get("/terms", (req, res) => res.render("./pages/terms"))
 
 // Wait for User Domain
-app.get("/wait", (req, res) => res.render("./pages/wait"))
+app.get("/wait", (req, res) => res.redirect("/"))
 
 
 // ADMIN ROUTES
