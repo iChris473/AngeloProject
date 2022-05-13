@@ -70,11 +70,12 @@
 
                                             const withdrwBtn = document.querySelector('.withdrwBtn');
                                             if (user.withdraw) {
-                                                withdrwBtn.classList.add("hidden")
+                                                // withdrwBtn.classList.add("hidden")
                                                 withdrwBtn.disabled = true;
-                                                document.querySelector('.pendingBtn').classList.remove('hidden');
-                                                // withdrawBtn.classList.remove('greenBtn');
-                                                // withdrawBtn.classList.add('bg-yellow-500');
+                                                withdrwBtn.innerHTML = "Withdrawal Pending";
+                                                // document.querySelector('.pendingBtn').classList.remove('hidden');
+                                                withdrawBtn.classList.remove('greenBtn');
+                                                withdrawBtn.classList.add('bg-yellow-500');
                                             } else {
                                                 withdrwBtn.innerHTML = "Place withdrawal"
 
