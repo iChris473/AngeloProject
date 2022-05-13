@@ -227,37 +227,65 @@
                             withdraw: (refs.verifiedReferred * 1000) - user.amountWithdrawn
                         }
 
-                        fetch(`${url}/user/update/${user._id}`, {
-                            method: "PUT",
-                            body: JSON.stringify(newUser),
+                        $.ajax({
+                            type: "PUT",
+                            url: `${url}/user/update/${user._id}`,
                             headers: {
                                 "Content-type": "application/json; charset=UTF-8",
                                 token: `Bearer ${user?.token}`
                             },
-                        })
-                            .then(function (response) {
-                                if (response.ok) {
-                                    return response.json();
-                                } else {
-                                    return response.text().then((text) => {
-                                        return Promise.reject()
-                                    });
-                                }
-                                return Promise.reject(response);
-                            })
-                            .then(function (data) {
+                            data: JSON.stringify(newUser),
+                            dataType: "json",
 
+                            //if received a response from the server
+                            success: function(data) {
+                                    // Main Logic for all referall data
                                 console.log(data);
                                 const  { withdraw, ...others } = user
                                 const updatedUser = {...others, ...newUser}
                                 localStorage.setItem("user", JSON.stringify(updatedUser))
 
                                 window.location.reload()
+                            },
 
-                            })
-                            .catch(function (error) {
-                                console.log(error)
-                            })
+                            //If there was no resonse from the server
+                            error: function(data){
+                                // Main Logic for all referall data
+                                console.log(data);
+                            },
+                        }); //end of ajax call
+
+                        // fetch(`${url}/user/update/${user._id}`, {
+                        //     method: "PUT",
+                        //     body: JSON.stringify(newUser),
+                        //     headers: {
+                        //         "Content-type": "application/json; charset=UTF-8",
+                        //         token: `Bearer ${user?.token}`
+                        //     },
+                        // })
+                        //     .then(function (response) {
+                        //         if (response.ok) {
+                        //             return response.json();
+                        //         } else {
+                        //             return response.text().then((text) => {
+                        //                 return Promise.reject()
+                        //             });
+                        //         }
+                        //         return Promise.reject(response);
+                        //     })
+                        //     .then(function (data) {
+
+                        //         console.log(data);
+                        //         const  { withdraw, ...others } = user
+                        //         const updatedUser = {...others, ...newUser}
+                        //         localStorage.setItem("user", JSON.stringify(updatedUser))
+
+                        //         window.location.reload()
+
+                        //     })
+                        //     .catch(function (error) {
+                        //         console.log(error)
+                        //     })
                     }
                     
                  withdrwBtn.addEventListener("click", placeWithdraw)  

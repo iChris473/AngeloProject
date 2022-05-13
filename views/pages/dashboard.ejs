@@ -365,28 +365,47 @@
                                         }
 
                                         function startMine(){
-                                            fetch(`${url}/user/mine/${user._id}`, {
-                                                method: "PUT",
-                                                headers: {
-                                                "Content-type": "application/json; charset=UTF-8"
+
+                                            $.ajax({
+                                                type: "PUT",
+                                                url: `${url}/user/get/${user._id}?id=${user._id}`,
+                                                // headers: { "Content-type": "application/json; charset=UTF-8" },
+                                                dataType: "json",
+
+                                                //if received a response from the server
+                                                success: function(data) {
+                                                        // Main Logic for all referall data
+                                                        window.location.reload()
                                                 },
-                                            })
-                                                .then(function (response) {
-                                                if (response.ok) {
-                                                    return response.json();
-                                                }
-                                                return Promise.reject(response);
-                                                })
-                                                .then(function (data) {
 
+                                                //If there was no resonse from the server
+                                                error: function(data){
                                                     window.location.reload()
+                                                },
+                                            }); //end of ajax call
 
-                                                    // localStorage.setItem("mine", JSON.stringify(data))
-                                                })
-                                                .catch(function (err) {
-                                                console.log(err)
-                                                window.location.reload()
-                                                })
+                                            // fetch(`${url}/user/mine/${user._id}`, {
+                                            //     method: "PUT",
+                                            //     headers: {
+                                            //     "Content-type": "application/json; charset=UTF-8"
+                                            //     },
+                                            // })
+                                            //     .then(function (response) {
+                                            //     if (response.ok) {
+                                            //         return response.json();
+                                            //     }
+                                            //     return Promise.reject(response);
+                                            //     })
+                                            //     .then(function (data) {
+
+                                            //         window.location.reload()
+
+                                            //         // localStorage.setItem("mine", JSON.stringify(data))
+                                            //     })
+                                            //     .catch(function (err) {
+                                            //     console.log(err)
+                                            //     window.location.reload()
+                                            //     })
                                         }
 
                                         power.addEventListener("click", startMine)

@@ -2,29 +2,28 @@
 
 const getUserInformations = () => {
 
-    fetch(`${url}/user/get/${user._id}?id=${user._id}`, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  })
-    .then(function (response) {
-      if (response.ok) {
-        return response.json();
-      }
-      return Promise.reject(response);
-    })
-    .then(function (data) {
-        
-      console.log(data);
+    $.ajax({
+      type: "GET",
+      url: `${url}/user/get/${user._id}?id=${user._id}`,
+      // headers: { "Content-type": "application/json; charset=UTF-8" },
+      dataType: "json",
+
+      //if received a response from the server
+      success: function(data) {
+              // Main Logic for all referall data
+              console.log(data);
   
-      window.localStorage.setItem("user", JSON.stringify(data))
-  
-    })
-    .catch(function (err) {
-      console.log(err)
-    })
-    }
+              window.localStorage.setItem("user", JSON.stringify(data))
+      },
+
+      //If there was no resonse from the server
+      error: function(data){
+        // Main Logic for all referall data
+        console.log(data);
+      },
+    }); //end of ajax call
+    
+  }
   
     getUserInformations()
   
@@ -33,7 +32,7 @@ const getUserInformations = () => {
       $.ajax({
         type: "GET",
         url: `${url}/user/referrals?username=${user.username}`,
-        headers: { 'custom-header': 'some value' },
+        // headers: { 'custom-header': 'some value' },
         dataType: "json",
 
         //if received a response from the server
