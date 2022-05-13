@@ -22,12 +22,12 @@ const getUserInformations = () => {
         console.log(data);
       },
     }); //end of ajax call
-    
+
   }
   
     getUserInformations()
   
-    async function getReferralls(){
+    function getReferralls(){
 
       $.ajax({
         type: "GET",

@@ -48,13 +48,35 @@
                                         <div class="flex items-center justify-between gap-10">
                                             <div class="space-y-2">
                                                 <p class="text-gray-200 font-bold text-xl">Referral Balance</p>
-                                                <p class="ultra text-2xl text-gray-400 refBalance"></p>
+                                                <p class="ultra text-2xl text-gray-400 refBalance">
+                                                    <script>
+                                                        const refBalance = document.querySelector('.refBalance')
+
+                                                        refBalance.innerHTML = "NGN " + ((refs.verifiedReferred * 1000) - user.amountWithdrawn)?.toLocaleString();
+                                                    </script>
+                                                </p>
                                             </div>
                                             <div class="purpleGrad w-10 h-10 opacity-50"></div>
                                         </div>
-                                        <button class="withdrwBtn greenBtn shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-lg tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse hidden"></button>
+                                        <button class="withdrwBtn greenBtn shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-lg tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse hidden">
+                                        </button>
                                         <p class="pendingBtn bg-gray-900 p-4 rounded-md px-10 font-bold text-sm tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse hidden">PENDING...</p>
                                         <p class="referrBtn greenBtn shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-sm tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse hidden">Start Referring your friends and earn #1,000 on each referral</p>
+                                        <script>
+
+
+                                            const withdrwBtn = document.querySelector('.withdrwBtn');
+                                            if (user.withdraw) {
+                                                withdrwBtn.classList.add("hidden")
+                                                withdrwBtn.disabled = true;
+                                                document.querySelector('.pendingBtn').classList.remove('hidden');
+                                                // withdrawBtn.classList.remove('greenBtn');
+                                                // withdrawBtn.classList.add('bg-yellow-500');
+                                            } else {
+                                                withdrwBtn.innerHTML = "Place withdrawal"
+
+                                            }
+                                        </script>
                                     </div>
                                     <div class="border border-gray-800 rounded-md lightDark p-7 shadow-md shadow-gray-700 w-full max-w-[800px] mx-auto">
                                         <div class="flex items-center justify-between gap-10">
@@ -84,8 +106,6 @@
             <script>
 
                 const refs = JSON.parse(localStorage.getItem('ref'));
-
-                const withdrwBtn = document.querySelector('.withdrwBtn');
                 const referrBtn = document.querySelector('.referrBtn');
                 const tradeWithdraw = document.querySelector('.tradeWithdraw');
                 const placeTradeWith = document.querySelector('.placeTradeWith');
@@ -95,13 +115,10 @@
                 //     placeTradeWith.classList.remove('hidden');
                 // } 
 
-                const refBalance = document.querySelector('.refBalance')
                 // "NGN " + ( (refs.length * 1000) - user.amountWithdrawn ).toLocaleString();                
                 const mineBalance = document.querySelector('.mineBalance')
 
                 let totalTradedBalance;
-
-                refBalance.innerHTML = "NGN " + ( (refs.verifiedReferred * 1000) - user.amountWithdrawn )?.toLocaleString();
 
                 if (((new Date().getTime() - user.lastMinedDate) / (1000 * 60 * 60 * 24)) < 1) {
 
@@ -153,17 +170,6 @@
                     placeTradeWith.disabled = true;
                 } else {
                     placeTradeWith.innerHTML = "Place withdrawal"
-
-                }
-
-                if(user.withdraw){
-                    withdrwBtn.classList.add("hidden")
-                    withdrwBtn.disabled = true;
-                    document.querySelector('.pendingBtn').classList.remove('hidden');
-                    // withdrawBtn.classList.remove('greenBtn');
-                    withdrawBtn.classList.add('bg-yellow-500');
-                } else {
-                    withdrwBtn.innerHTML = "Place withdrawal"
 
                 }
 
