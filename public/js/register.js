@@ -39,7 +39,7 @@ const submitForm = async e => {
         number: number.value,
         referrer: window.location.search.split("=")[1] || referr.value || "",
         password: password.value,
-        username: username.value,
+        username: username.value.replace(/ /g, ""),
 
     }
 
