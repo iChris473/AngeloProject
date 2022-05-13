@@ -55,6 +55,9 @@ const submitForm = async e => {
         submit.innerHTML = "Update"
         success.innerHTML = "Password successfully updated";
         success.classList.remove("hidden")
+        oldPass.value = ""
+        newPass.value = ""
+        confirmPass.value = ""
       })
       .catch(function (error) {
         console.log(error)

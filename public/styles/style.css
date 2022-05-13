@@ -1268,6 +1268,13 @@ body{
     width: 13px;
     height: 13px;
 }
+.goldenBtn {
+  background: rgb(0,15,36);
+  background:linear-gradient(90deg, #a37f37 0%, #8a5e14 0%, #7e5c15 100%);
+  color: white;
+
+}
+
 .purpleGrad{
     background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
     border-radius: 50%;
