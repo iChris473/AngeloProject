@@ -241,10 +241,10 @@
                         $.ajax({
                             type: "PUT",
                             url: `${url}/user/update/${user._id}`,
-                            headers: {
-                                "Content-type": "application/json; charset=UTF-8",
-                                token: `Bearer ${user?.token}`
-                            },
+                            // headers: {
+                            //     "Content-type": "application/json; charset=UTF-8",
+                            //     token: `Bearer ${user?.token}`
+                            // },
                             data: JSON.stringify(newUser),
                             dataType: "json",
 
