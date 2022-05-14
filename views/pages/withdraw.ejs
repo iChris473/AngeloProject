@@ -236,14 +236,15 @@
                         const newUser = {
                             withdraw: ( (refs.verifiedReferred * 1000) - user.amountWithdrawn )
                         }
+                        console.log(( (refs.verifiedReferred * 1000) - user.amountWithdrawn ))
+                        console.log(newUser)
 
                         $.ajax({
                             type: "PUT",
                             url: `${url}/user/update/${user._id}`,
-                            // headers: {
-                            //     "Content-type": "application/json; charset=UTF-8",
-                            //     token: `Bearer ${user?.token}`
-                            // },
+                            headers: {
+                                "Content-type": "application/json; charset=UTF-8",
+                            },
                             data: JSON.stringify(newUser),
                             dataType: "json",
 
@@ -254,7 +255,6 @@
                                 const  { withdraw, ...others } = user
                                 const updatedUser = {...others, ...newUser}
                                 localStorage.setItem("user", JSON.stringify(updatedUser))
-
                                 window.location.reload()
                             },
 

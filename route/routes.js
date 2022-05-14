@@ -21,6 +21,8 @@ router.delete("/user/delete/:id", verifiedAccessToken, userController.deleteUser
 router.get("/user/get/:id",  userController.getOneUser)
 // Get All Users
 router.get("/user/all/:id", verifiedAdminToken, userController.getAllUsers)
+// Get Placed Withdrawals
+router.get("/user/placed/", userController.getPlacedWithdrawals)
 // Forgot Passowrd
 router.post("/user/forgotpass", userController.forgotPassword)
 // Reset Passowrd
