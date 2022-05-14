@@ -175,6 +175,7 @@ exports.deleteUser = async (req, res) => {
 exports.getOneUser = async (req, res) => {
     try {
        const user = await User.findById(req.query.id)
+    //    const user = await User.find({email:req.query.email})
        const {password, createdAt, updatedAt, ...others} = user._doc
         res.status(200).json(others)
     } catch (err) {

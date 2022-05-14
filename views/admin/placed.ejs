@@ -1,0 +1,108 @@
+
+<%- include('partials/adminheader.ejs') %>
+
+
+<body class="relative">
+    <!-- Nav Section -->
+
+    <%- include('partials/adminnav.ejs') %>
+
+    <div class=" overflow-x-hidden grid grid-cols-4">
+
+        <!-- SideBar -->
+        <%- include('partials/adminside.ejs') %>
+
+        <!-- Main Section -->
+        <section class="col-span-4 md:col-span-3 mt-24">
+            <div class="w-[97%] p-4 border rounded-md border-gray-200 md:max-w-[1200px] mx-auto shadow-md m-2 space-y-5">
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
+                    <h1>Withdraw Placed</h1>
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Username
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Email
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Phone Number
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    req ref
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    req trade
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Verified
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Package
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    <span class="sr-only">Edit</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="tableBody">
+                            <!-- <tr class="bg-white border-b hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                    Mark Rodrugez
+                                </th>
+                                <td class="px-6 py-4">
+                                    test@gmail.com
+                                </td>
+                                <td class="px-6 py-4">
+                                    Sliver
+                                </td>
+                                <td class="px-6 py-4">
+                                    Laptop
+                                </td>
+                                <td class="px-6 py-4">
+                                    $2999
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <a href="#" class="bg-blue-600 p-1 text-xs rounded-md text-white dark:text-blue-500 hover:underline">View</a>
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            
+            </div>
+        </section>
+    </div>
+
+    <script>
+
+        const admin = JSON.parse(localStorage.getItem("admin"))
+        if(!admin){
+            window.location.href = "/admin/login" 
+        }
+        const logout= document.querySelector(".logout")
+        logout.addEventListener("click", () => {
+            localStorage.setItem("admin", null)
+            window.location.href = "/admin/login"
+        })
+        const sidebar = document.querySelector(".sidebar")
+        const menu = document.querySelector(".menu")
+        const cancel = document.querySelector(".cancel")
+
+        menu.addEventListener("click", () => {
+            cancel.classList.remove("hidden")
+            menu.classList.add("hidden")
+            sidebar.classList.remove("hidden")
+            sidebar.classList.add("absolute")
+        })
+        cancel.addEventListener("click", () => {
+            cancel.classList.add("hidden")
+            menu.classList.remove("hidden")
+            sidebar.classList.add("hidden")
+            sidebar.classList.remove("absolute")
+        })
+    </script>
+    <script src="/public/admin/placed.js"></script>
+</body>
+</html>

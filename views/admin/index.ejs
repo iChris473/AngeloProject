@@ -27,15 +27,15 @@
                         <a href="/admin/users" class="block mx-auto w-[90%] text-center text-pink-600 border-b pb-2 font-semibold text-sm border-pink-400">View all users</a>
                     </div>
                 </div>
-                <!-- Total Works -->
+                <!-- Total Withdrawal Placed -->
                 <div class="w-[97%] p-4 border rounded-md border-gray-200 md:max-w-[700px] mx-auto shadow-md m-2 space-y-5">
                     <div class="flex flex-col items-center justify-between gap-7">
                         <div class="flex items-center w-full justify-between">
-                            <h2 class="text-gray-500 tracking-wider font-bold text-md mx-5">TOTAL WORKS</h2>
+                            <h2 class="text-gray-500 tracking-wider font-bold text-md mx-5">Withdrawal Placed</h2>
                             <p class="text-green-600 font-bold text-md">^ 10 %</p>
                         </div>
-                        <h1 class="text-3xl text-center w-full font-bold text-gray-600 allWorks"></h1>
-                        <a href="/admin/works" class="block mx-auto w-[90%] text-center text-violet-600 border-b pb-2 font-semibold text-sm border-violet-400">View all Works</a>
+                        <h1 class="text-3xl text-center w-full font-bold text-gray-600 allWorks placedWiths"></h1>
+                        <a href="/admin/placed" class="block mx-auto w-[90%] text-center text-violet-600 border-b pb-2 font-semibold text-sm border-violet-400">View all Withdrawals Placed</a>
                     </div>
                 </div>
                 <!-- Total Applicants -->
@@ -55,6 +55,7 @@
 
   <script src="/public/admin/admin.js"></script>
   <script>
+
           async function getTotalUsers(){
         fetch(`${url}/user/all/${admin.id}`, {
             method: "GET",
@@ -78,6 +79,31 @@
     }
     
     getTotalUsers()
+
+          async function getWithdrawals(){
+        fetch(`${url}/user/placed/${admin.id}`, {
+            method: "GET",
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+              token: `Bearer ${admin?.token}`
+            },
+          })
+            .then(function (response) {
+              if (response.ok) {
+                return response.json();
+              }
+              return Promise.reject(response);
+            })
+            .then(function (data) {
+                document.querySelector(".placedWiths").innerHTML = data.length
+            })
+            .catch(function (err) {
+              console.log(err)
+            })
+    }
+    
+    getWithdrawals()
+
   </script>
  
 </body>

@@ -5,16 +5,16 @@ const app = express()
 require("./models/db");
 const cors = require("cors")
 
-// app.enable('trust proxy')
+app.enable('trust proxy')
 
-// app.use(function(request, response, next) {
+app.use(function(request, response, next) {
 
-//     if (process.env.NODE_ENV != 'development' && !request.secure) {
-//        return response.redirect("https://" + request.headers.host + request.url);
-//     }
+    if (process.env.NODE_ENV != 'development' && !request.secure) {
+       return response.redirect("https://" + request.headers.host + request.url);
+    }
 
-//     next();
-// })
+    next();
+})
 
 // serve your css as static
 app.use('/public', express.static('public'));
@@ -104,6 +104,8 @@ app.get("/admin/login", (req, res) => res.render("./admin/login"))
 app.get("/admin/thisuser", (req, res) => res.render("./admin/thisuser"))
 // Generate Coupon Route
 app.get("/admin/coupon", (req, res) => res.render("./admin/coupon"))
+// Generate Coupon Route
+app.get("/admin/placed", (req, res) => res.render("./admin/placed"))
 
 
 const port = process.env.PORT || 8800
