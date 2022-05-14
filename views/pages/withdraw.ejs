@@ -69,7 +69,6 @@
                                         <p class="referrBtn greenBtn shadow-md shadow-green-700 p-4 rounded-md px-10 font-bold text-sm tracking-wide my-5 w-full mx-auto text-center max-w-[600px] mt-10 cursor-pointer animate-pulse hidden">Start Referring your friends and earn #1,000 on each referral</p>
                                         <script>
 
-
                                             const withdrwBtn = document.querySelector('.withdrwBtn');
                                             if (user.withdraw) {
                                                 // withdrwBtn.classList.add("hidden")
@@ -235,7 +234,7 @@
                     }
 
                         const newUser = {
-                            withdraw: (refs.verifiedReferred * 1000) - user.amountWithdrawn
+                            withdraw: ( (refs.verifiedReferred * 1000) - user.amountWithdrawn )
                         }
 
                         $.ajax({
