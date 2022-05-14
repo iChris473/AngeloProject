@@ -1,7 +1,9 @@
 
 <nav class="bg-[#1b1b1b] border-b shadow border-green-900 p-5 fixed w-full z-50 flex items-center justify-between md:block">
     <script>
+
         const user = JSON.parse(window.localStorage.getItem('user'));
+        
         if(!user){
             window.location.href = '/register';
         }

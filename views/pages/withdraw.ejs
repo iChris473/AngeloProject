@@ -12,28 +12,30 @@
                     <section class="col-span-4 md:col-span-3 mt-16">
                         <script>
 
-                                async function getReferralls(){
-
-                                fetch(`${url}/user/referrals?username=${user.username}`, {
-                                    method: "GET",
-                                    headers: {
-                                    "Content-type": "application/json; charset=UTF-8",
-                                        token: `Bearer ${user?.token}`
-                                    },
-                                })
-                                    .then(function (response) {
-                                    if (response.ok) {
-                                        return response.json();
-                                    }
-                                    return Promise.reject(response);
-                                    })
-                                    .then(function (data) {
-                                        window.localStorage.setItem("ref", JSON.stringify(data))
+                            function getReferralls(){
                                     
-                                    })
-                                    .catch(function (err) {
-                                    console.log(err)
-                                    })
+                                $.ajax({
+                                    type: "GET",
+                                    url: `${url}/user/referrals?username=${user.username}`,
+                                    // headers: { 'custom-header': 'some value' },
+                                    dataType: "json",
+
+                                    //if received a response from the server
+                                    success: function(data) {
+                                            // Main Logic for all referall data
+                                            console.log(data);
+
+                                            window.localStorage.setItem("ref", JSON.stringify(data))
+                                    },
+
+                                    //If there was no resonse from the server
+                                    error: function(data){
+                                    // Main Logic for all referall data
+                                    console.log(data);
+                                    },
+
+                                }); //end of ajax call
+            
                             }
                             
                             getReferralls()
